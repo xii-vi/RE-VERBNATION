@@ -1,0 +1,9 @@
+.videoCard{
+    width:fit-content;
+}
+.videoCardTitle > p{
+    margin: 0;
+}
+.margin-left-auto{
+    margin-left: auto;
+}
