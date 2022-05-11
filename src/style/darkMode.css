@@ -1,0 +1,10 @@
+.dark{
+    color: var(--white-color);
+    background-color: #121212;
+}
+.dark .fas{
+    color: var(--white-color);
+}
+.dark .sidebar-btn {
+    color: var(--white-color);
+}

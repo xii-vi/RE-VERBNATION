@@ -1,0 +1,28 @@
+.homepage-layout{
+    display: grid;
+    grid-template-areas: 
+    "nav nav "
+    "side main"
+    "side main"
+    "foot foot ";
+    grid-gap: 10px;
+}
+
+.navbar-wrapper{
+    grid-area: nav;
+}
+.sidebar{
+    grid-area: side;
+}
+.main{
+    grid-area: main;
+}
+.footer{
+    grid-area: foot;
+}
+
+.main-display{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+}
