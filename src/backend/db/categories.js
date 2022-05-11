@@ -8,20 +8,14 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    categoryName: "Desi Hip Hop (DHH)",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "Desi hip hop is a term for music and culture which combines the influences of hip hop and the Indian subcontinent; the term desi referring to the South Asian diaspora. The term has also come to be used as an alternative for rap music and even pop music which involves rappers of South Asian origins.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    categoryName: "Lo-Fi Hip Hop (LFH)",
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Backend Development",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "Lofi hip hop (also known as Chillhop and lofi beats to study to) is a form of downtempo that combines elements of hip hop and Chill-out music.",
   },
 ];
