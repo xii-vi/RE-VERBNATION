@@ -1,0 +1,14 @@
+.sidebar>ul>li{
+    color:var(---black-color);
+    font-weight: bold;
+    list-style: none;
+}
+.sidebar>ul>li:hover{
+    background-color: var(--text-color-light);
+    border-radius: 10px;
+}
+.sidebar-btn{
+    color: var(---black-color);
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+@import url("../style/layout.css");
+@import url("../style/darkMode.css");
+@import url("../style/variables.css");
+
+html,body,*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.fa , .fas, .far{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
