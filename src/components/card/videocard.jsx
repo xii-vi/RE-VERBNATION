@@ -1,8 +1,6 @@
 import "./videoCard.css"
 import "../../style/layout.css"
-export const VideoCard =(props)=>{
-    const data = props.singleVideoCard;
-    
+export const VideoCard =({singleVideoCard : data})=>{
     return(
         <div className="videoCard p-1">
             <img className="img-responsive" src={data.creatorImage} />
