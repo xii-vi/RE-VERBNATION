@@ -3,7 +3,6 @@ import React,{useReducer} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import { signupReducer } from "../../reducer/authReducer";
 import { useAuth } from "../../context/authContext";
-import { Sidebar } from "../../components/sidebar/sidebar";
 
 export const Signup = () => {
     const navigate = useNavigate();
@@ -24,8 +23,6 @@ export const Signup = () => {
     }
 }
 return(
-    <div className="signup app-layout">
-        <Sidebar />
     <div className="py-5 main flex center-flex" >
     <form className="p-5 signup-form" onSubmit={(e)=> submitHandler(e, username, email, password)}>
         <p className="h5">Welcome to the your Jam, fam!!</p>
@@ -57,7 +54,6 @@ return(
             <Link to="/login"><p className="py-2">Already a member ? <span className="text-bold">Login</span></p></Link>
         </div>
     </form>
-    </div>
     </div>
     )
 }
