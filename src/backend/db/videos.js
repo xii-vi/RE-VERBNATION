@@ -2,7 +2,7 @@
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
  * */
- import { v4 as uuid } from "uuid";
+//  import { v4 as uuid } from "uuid";
 export const videos = [
   {
     _id: "7pCv8ztVBoI",
@@ -41,16 +41,16 @@ export const videos = [
     logo:"https://yt3.ggpht.com/ytc/AKedOLQBoBlDevqIuBxrZ82gj_HgCjA_CVJ8yHw-3bRGRw=s176-c-k-c0x00ffffff-no-rj"
   },
   {
-    _id: "z3q-8U1XHmo",
-    title: "GHAZIABAD",
-    description: "CREDITS:Lyrics/Vocals - Ad Vasudev, Music - Control Gang, Mix/Master - Rakht",
-    creator: "Vasudev",
+    _id: "Fj0S01-kPn8",
+    title: "BEST",
+    description: "Uttar Pradesh Represent 💪Northside, we here!  Audio credits:Song name - Best, Written, performed and engineered by - Panther, Produced by - NTZ . Video credits: A Film by - Illusion Arts Production, Directed by - Yusuf Khan, Cinematography by - Sattu Bhaiya, Concept, co-direction by - Tuhin Chandra, Edited by - Panther,Behind the scenes - Gyanesh,Production assistant - Sabhay Mishra, Album art by - Tuhin Chandra and Manil Kandwal",
+    creator: "Panther",
     category: "Desi Hip Hop (DHH)",
-    duration: "02:08",
-    views: "114k",
-    uploaded: "9",
-    creatorImage: "https://i.ytimg.com/vi/z3q-8U1XHmo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLChGWMF6GNx9doxL65blcFW7bYWKg",
-    logo:"https://yt3.ggpht.com/37n0ih9hoDMoDRg_wMpyXiNX1kNjIgLJGIBWhVmk37Eos1FFoWdUDJzYl13L2r_3zUxpE4S1=s176-c-k-c0x00ffffff-no-rj"
+    duration: "03:48",
+    views: "180k",
+    uploaded: "3",
+    creatorImage: "https://i.ytimg.com/vi/Fj0S01-kPn8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB7vOBf4BkQxdslFiqXbkBEYoGlpA",
+    logo:"https://yt3.ggpht.com/1x4DLA1fRSEwvjY7FHwuHi7sBtIzUF0pwmZ-EEPQweMIX7s4YNQI9QCit8y9qafe-lwRP2pQww=s88-c-k-c0x00ffffff-no-nd-rj"
   },
   {
     _id: "MxTTWO_488M",

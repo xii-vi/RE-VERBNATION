@@ -1,4 +1,4 @@
-import { useContext,createContext,useReducer,useState,useEffect } from "react";
+import { useContext,createContext,useState,useEffect } from "react";
 import { getVideosDataFromServer , getCategoriesDataFromServer } from "../utilities/apis/apis";
 
 const VideoContext = createContext();

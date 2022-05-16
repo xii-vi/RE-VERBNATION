@@ -2,7 +2,7 @@ import "./navbar.css"
 import { useTheme } from "../../context/themeContext"
 
 export const Navbar =()=>{
-    const { toggleTheme, theme } = useTheme();
+    const { toggleTheme } = useTheme();
     return(
     <div className="navbar-wrapper">
         <nav className="flex navbar">
