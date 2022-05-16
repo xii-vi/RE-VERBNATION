@@ -1,6 +1,8 @@
 .navbar{
     align-items: space-between;
     justify-content: space-between;
+    position: sticky;
+    z-index: 2;
 }
 .fa-search{
     margin: 0;

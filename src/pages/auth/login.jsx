@@ -1,4 +1,4 @@
-import { getLoginDataFromServer } from "../../utilities/apis/videosDataApi";
+import { getLoginDataFromServer } from "../../utilities/apis/apis";
 import "./auth.css"
 import { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
