@@ -1,14 +1,19 @@
 import { Navbar } from "./components/navbar/navbar";
-import { Homepage } from "./pages";
+import { Homepage,Login } from "./pages";
 import { useTheme } from "./context/themeContext"
 import "./style/main.css"
-
+import { Routes, Route } from "react-router-dom";
+import { Signup } from "./pages/auth/signup";
 function App() {
   const { theme } = useTheme();
   return (
-    <div className={theme === "light" ? "light homepage-layout" : "dark homepage-layout"}>
+    <div className= {theme === "light" ? "light" : "dark"}>
     <Navbar />
-    <Homepage />
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+    </Routes>
     </div>
   );
 }

@@ -14,9 +14,8 @@ export const Navbar =()=>{
             <button><i className="fa fa-search cursor-pointer"></i></button>
             </div>
             <div className="nav-left-side-pills">   
-            <button className="btn btn-primary">Login</button>
-                <i className="far fa-user fa-2x"></i>
-                <i className="fa fa-sun fa-2x px-2" onClick={toggleTheme}></i>
+            <button className="btn btn-secondary">Login</button>
+            <i className="fa fa-sun fa-2x px-2" onClick={toggleTheme}></i>
             </div>
         </nav>
     </div>

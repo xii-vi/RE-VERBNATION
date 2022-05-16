@@ -5,7 +5,7 @@ import { VideoCard } from "../../components/card/videocard"
 export const Homepage = ()=>{
     const { videoData,categoryData} =  useVideo()
     return(
-        <>
+        <div className="app-layout">
         <Sidebar />
         <div className="main">
             <div className="flex">
@@ -16,8 +16,6 @@ export const Homepage = ()=>{
             {videoData.map(item=><VideoCard singleVideoCard={item} key={item._id}/>)}
         </div>
         </div>
-        <div className="footer">
         </div>
-        </>
     )
 }

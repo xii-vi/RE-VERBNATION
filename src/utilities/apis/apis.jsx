@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const getVideosDataFromServer = async () => {
     try {
         const response = await axios.get('/api/videos');
@@ -19,4 +18,14 @@ const getCategoriesDataFromServer = async ()=>{
     }
 }
 
-export {getVideosDataFromServer,getCategoriesDataFromServer}
+const getLoginDataFromServer = async (email,password)=>{
+    try {
+        const loginResponse = await axios.post("api/auth/login", {email,password});
+        return loginResponse
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+export {getVideosDataFromServer,getCategoriesDataFromServer,getLoginDataFromServer}
