@@ -4,7 +4,6 @@ import { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginReducer } from "../../reducer/authReducer";
 import { useAuth } from "../../context/authContext";
-import { Sidebar } from "../../components/sidebar/sidebar";
 
 export const Login = () => {
     const {authDispatch}= useAuth();
@@ -31,8 +30,6 @@ export const Login = () => {
     }
     }
     return( 
-    <div className="app-layout">
-    <Sidebar />
     <div className="flex center-flex login">
         <form className="login-form" onSubmit={(e)=> submitHandler(e, email,password)}>
             <p className="h5">Login</p>
@@ -64,7 +61,6 @@ export const Login = () => {
                 <Link to="/signup"><span className="text-bold">Sign Up</span></Link>
             </div>
         </form>
-    </div>
-    </div>  
+    </div> 
     )
 }

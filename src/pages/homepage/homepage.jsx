@@ -1,12 +1,9 @@
-import { Sidebar } from "../../components/sidebar/sidebar"
 import "../../style/layout.css"
 import { useVideo } from "../../context/videoContext"
 import { VideoCard } from "../../components/card/videocard"
 export const Homepage = ()=>{
     const { videoData,categoryData} =  useVideo()
     return(
-        <div className="app-layout">
-        <Sidebar />
         <div className="main">
             <div className="flex">
                 <span className="btn btn-primary m-2">All</span>
@@ -14,7 +11,6 @@ export const Homepage = ()=>{
             </div>
         <div className="main-display">
             {videoData.map(item=><VideoCard singleVideoCard={item} key={item._id}/>)}
-        </div>
         </div>
         </div>
     )

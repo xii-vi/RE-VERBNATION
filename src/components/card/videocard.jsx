@@ -1,9 +1,12 @@
 import "./videoCard.css"
 import "../../style/layout.css"
+import { Link } from "react-router-dom"
 export const VideoCard =({singleVideoCard : data})=>{
     return(
         <div className="videoCard p-1">
-            <img className="img-responsive" src={data.creatorImage} />
+            <Link to={`/video/${data._id}`}>
+                <img className="img-responsive" src={data.creatorImage} alt="creator-img"/>
+            </Link>
             <div className="p-4">
             <div className="videoCardTitle">
                 <p className="h5 py-2">{data.title}</p>
