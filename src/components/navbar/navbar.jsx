@@ -1,5 +1,6 @@
 import "./navbar.css"
 import { useTheme } from "../../context/themeContext"
+import { Link } from "react-router-dom";
 
 export const Navbar =()=>{
     const { toggleTheme } = useTheme();
@@ -14,7 +15,7 @@ export const Navbar =()=>{
             <button><i className="fa fa-search cursor-pointer"></i></button>
             </div>
             <div className="nav-left-side-pills">   
-            <button className="btn btn-secondary">Login</button>
+            <Link to="/login"><button className="btn btn-secondary">Login</button></Link>
             <i className="fa fa-sun fa-2x px-2" onClick={toggleTheme}></i>
             </div>
         </nav>

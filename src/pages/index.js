@@ -1,2 +1,5 @@
 export {Homepage} from "./homepage/homepage"
 export {Login} from "./auth/login"
+export {Signup} from "./auth/signup"
+export {SingleVideo} from "./singleVideo/singleVideo"
+export {WatchLater} from "./watchlater/watchlater"
