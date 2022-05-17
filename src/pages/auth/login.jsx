@@ -1,14 +1,15 @@
 import { getLoginDataFromServer } from "../../utilities/apis/apis";
 import "./auth.css"
 import { useReducer } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loginReducer } from "../../reducer/authReducer";
 import { useAuth } from "../../context/authContext";
 
 export const Login = () => {
     const {authDispatch}= useAuth();
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"; 
     const [{email,password},loginDispatch] = useReducer(loginReducer, {email:"", password:""});
     const testHandler=()=>[
     loginDispatch({type:"SET_EMAIL",payload:"adarshbalika@gmail.com"}),
@@ -18,13 +19,12 @@ export const Login = () => {
         e.preventDefault();
         try{
         const loginResponse = await getLoginDataFromServer(email,password);
-        console.log(loginResponse)
         localStorage.setItem("encodedToken", loginResponse.data.encodedToken)
         localStorage.setItem('userData', JSON.stringify(loginResponse.data.foundUser));
         authDispatch({ type: "USER_LOGIN" })
         authDispatch({ type: "USER_TOKEN", payload: loginResponse.data.encodedToken })
         authDispatch({ type: "USER_DATA", payload: loginResponse.data.foundUser })
-        navigate("/")
+        navigate(from, {replace : true} )
     }catch(error){
         console.log(error.message);
     }

@@ -1,11 +1,8 @@
-import { Navbar } from "./components/navbar/navbar";
-import { Homepage,Login } from "./pages";
+import { Navbar,Sidebar,RequireAuth } from "./components";
+import { Homepage,Login,Signup,SingleVideo, WatchLater } from "./pages";
 import { useTheme } from "./context/themeContext"
 import "./style/main.css"
 import { Routes, Route } from "react-router-dom";
-import { Signup } from "./pages/auth/signup";
-import { Sidebar } from "./components/sidebar/sidebar";
-import { SingleVideo } from "./pages/singleVideo/singleVideo";
 function App() {
   const { theme } = useTheme();
   return (
@@ -18,6 +15,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/video/:videoId" element={<SingleVideo />} />
+      <Route element={<RequireAuth />}>
+      <Route path="/watchlater" element={<WatchLater />} />
+      </Route>
     </Routes>
     </div>
     </div>

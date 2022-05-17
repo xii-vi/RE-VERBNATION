@@ -1,10 +1,27 @@
 import { useParams } from "react-router-dom"
 import { useVideo } from "../../context/videoContext"
+import { useAuth } from "../../context/authContext"
+import { isVideoInWatchLater } from "../../utilities/helper/watchLaterFunction"
+import { removeVideoFromWatchLater,addVideoInWatchLater } from "../../utilities/apis/apis"
+import { useNavigate } from "react-router-dom"
 import "./singleVideo.css"
 export const SingleVideo =()=>{
-    const {videoData} = useVideo()
+    const navigate = useNavigate();
+    const {videoData,watchLaterState:{watchLaterList}, watchLaterDispatch} = useVideo()
     const {videoId} = useParams()
+    const { authState: { userLogin, encodedToken }} = useAuth();
     const videoDetails = videoData?.find(({ _id }) => _id === videoId)
+    const watchLaterHandler =()=>{
+        if (userLogin) {
+            if (isVideoInWatchLater(videoDetails._id, watchLaterList)) {
+            removeVideoFromWatchLater(videoDetails._id, watchLaterDispatch, encodedToken);
+            } else {
+            addVideoInWatchLater(videoDetails, watchLaterDispatch, encodedToken);
+            }
+        } else {
+            navigate("/login");
+        }
+        };
     return(
     <div className="video-player py-5"> 
         <div className="center-flex">
@@ -26,7 +43,7 @@ export const SingleVideo =()=>{
             
             <div className="margin-left-auto">
                 <i className="fa fa-thumbs-up px-2"></i>
-                <i className="fa fa-clock px-2"></i>
+                <i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>
                 <i className="fa fa-plus-square px-2"></i>
             </div>
         </div>
