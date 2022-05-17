@@ -1,5 +1,5 @@
 import { Navbar,Sidebar,RequireAuth } from "./components";
-import { Homepage,Login,Signup,SingleVideo, WatchLater } from "./pages";
+import { History,Homepage,LikedVideo,Login,Signup,SingleVideo,WatchLater } from "./pages";
 import { useTheme } from "./context/themeContext"
 import "./style/main.css"
 import { Routes, Route } from "react-router-dom";
@@ -17,6 +17,8 @@ function App() {
       <Route path="/video/:videoId" element={<SingleVideo />} />
       <Route element={<RequireAuth />}>
       <Route path="/watchlater" element={<WatchLater />} />
+      <Route path="/likedvideo" element={<LikedVideo />} />
+      <Route path="/history" element={<History />} />
       </Route>
     </Routes>
     </div>
