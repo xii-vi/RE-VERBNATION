@@ -11,12 +11,12 @@ export const SingleVideo =()=>{
     const {videoId} = useParams()
     const { authState: { userLogin, encodedToken }} = useAuth();
     const videoDetails = videoData?.find(({ _id }) => _id === videoId)
-    
+
     useEffect(() => {
         (async () => {
             if(!isVideoInHistory(videoDetails._id,History))
             addVideoInHistory(videoDetails, VideoDispatch, encodedToken)
-        })()},[videoDetails,VideoDispatch])
+        })()},[videoDetails,VideoDispatch,History,encodedToken])
 
     const watchLaterHandler =()=>{
             if (userLogin) {
