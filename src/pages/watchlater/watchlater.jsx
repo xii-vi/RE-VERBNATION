@@ -6,7 +6,7 @@ export const WatchLater = () => {
 const {watchLaterState: { watchLaterList }} = useVideo();
 return (
     <div className="main">
-    {watchLaterList == 0 ? 
+    {watchLaterList === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
