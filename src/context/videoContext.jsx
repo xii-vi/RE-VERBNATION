@@ -1,13 +1,15 @@
 import { useContext,createContext,useState,useEffect,useReducer } from "react";
 import { getVideosDataFromServer , getCategoriesDataFromServer } from "../utilities/apis/apis";
-import {watchLaterReducer} from "../reducer/watchLaterReducer";
+import {VideoReducer} from "../reducer/videoReducer";
 const VideoContext = createContext();
 
 const VideoProvider =({children})=>{
 const [videoData,setVideoData] = useState([])
 const [categoryData,setCategoryData] =  useState([])
-const [watchLaterState, watchLaterDispatch] = useReducer(watchLaterReducer, {
-    watchLaterList: []
+const [VideoState, VideoDispatch] = useReducer(VideoReducer, {
+    watchLaterList: [],
+    LikedVideos: [],
+    History:[]
 })
 useEffect(()=>{
     (async () => {
@@ -27,8 +29,8 @@ useEffect(()=>{
             setVideoData,
             categoryData,
             setCategoryData,
-            watchLaterState,
-            watchLaterDispatch
+            VideoState,
+            VideoDispatch
         }
         }>
             {children}

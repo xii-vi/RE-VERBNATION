@@ -1,27 +1,47 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import { useVideo } from "../../context/videoContext"
 import { useAuth } from "../../context/authContext"
-import { isVideoInWatchLater } from "../../utilities/helper/watchLaterFunction"
-import { removeVideoFromWatchLater,addVideoInWatchLater } from "../../utilities/apis/apis"
-import { useNavigate } from "react-router-dom"
+import { isVideoInWatchLater, isVideoInLikedVideo,isVideoInHistory } from "../../utilities/helper/videoFunctions"
+import { removeVideoFromWatchLater,addVideoInWatchLater, addVideoInLikedVideo,removeVideoFromLikedVideo,addVideoInHistory } from "../../utilities/apis/apis"
 import "./singleVideo.css"
 export const SingleVideo =()=>{
     const navigate = useNavigate();
-    const {videoData,watchLaterState:{watchLaterList}, watchLaterDispatch} = useVideo()
+    const {videoData,VideoState:{watchLaterList,LikedVideos,History}, VideoDispatch} = useVideo()
     const {videoId} = useParams()
     const { authState: { userLogin, encodedToken }} = useAuth();
     const videoDetails = videoData?.find(({ _id }) => _id === videoId)
+    
+    useEffect(() => {
+        (async () => {
+            if(!isVideoInHistory(videoDetails._id,History))
+            addVideoInHistory(videoDetails, VideoDispatch, encodedToken)
+        })()},[videoDetails,VideoDispatch])
+
     const watchLaterHandler =()=>{
-        if (userLogin) {
-            if (isVideoInWatchLater(videoDetails._id, watchLaterList)) {
-            removeVideoFromWatchLater(videoDetails._id, watchLaterDispatch, encodedToken);
+            if (userLogin) {
+                if (isVideoInWatchLater(videoDetails._id, watchLaterList)) {
+                removeVideoFromWatchLater(videoDetails._id, VideoDispatch, encodedToken);
+                } else {
+                addVideoInWatchLater(videoDetails, VideoDispatch, encodedToken);
+                }
             } else {
-            addVideoInWatchLater(videoDetails, watchLaterDispatch, encodedToken);
+                navigate("/login");
             }
-        } else {
-            navigate("/login");
-        }
+        
         };
+    
+    const LikedVideoHandler =()=>{
+            if (userLogin) {
+                if (isVideoInLikedVideo(videoDetails._id, LikedVideos)) {
+                    removeVideoFromLikedVideo(videoDetails._id, VideoDispatch, encodedToken);
+                    } else {
+                    addVideoInLikedVideo(videoDetails, VideoDispatch, encodedToken);
+                    }
+                } else {
+                    navigate("/login");
+                }
+        };     
     return(
     <div className="video-player py-5"> 
         <div className="center-flex">
@@ -42,7 +62,7 @@ export const SingleVideo =()=>{
             </div>
             
             <div className="margin-left-auto">
-                <i className="fa fa-thumbs-up px-2"></i>
+                <i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>
                 <i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>
                 <i className="fa fa-plus-square px-2"></i>
             </div>
