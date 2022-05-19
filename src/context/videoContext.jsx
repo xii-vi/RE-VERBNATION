@@ -4,12 +4,14 @@ import {VideoReducer} from "../reducer/videoReducer";
 const VideoContext = createContext();
 
 const VideoProvider =({children})=>{
+const[Modal,setModal]=useState(false)
 const [videoData,setVideoData] = useState([])
 const [categoryData,setCategoryData] =  useState([])
 const [VideoState, VideoDispatch] = useReducer(VideoReducer, {
     watchLaterList: [],
     LikedVideos: [],
-    History:[]
+    History:[],
+    Playlist:[],
 })
 useEffect(()=>{
     (async () => {
@@ -30,7 +32,9 @@ useEffect(()=>{
             categoryData,
             setCategoryData,
             VideoState,
-            VideoDispatch
+            VideoDispatch,
+            Modal,
+            setModal
         }
         }>
             {children}
