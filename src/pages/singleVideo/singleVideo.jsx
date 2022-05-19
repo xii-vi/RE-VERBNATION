@@ -1,4 +1,4 @@
-import { useParams, useNavigate,Navigate, useLocation } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { useVideo } from "../../context/videoContext"
 import { useAuth } from "../../context/authContext"
@@ -8,7 +8,6 @@ import "./singleVideo.css"
 import { PlaylistModal } from "../../components/playlist/playlistModal"
 export const SingleVideo =()=>{
     const navigate = useNavigate();
-    const location = useLocation();
     const {videoData,VideoState:{watchLaterList,LikedVideos,History}, VideoDispatch,Modal,setModal} = useVideo()
     const {videoId} = useParams()
     const { authState: { userLogin, encodedToken }} = useAuth();

@@ -1,7 +1,7 @@
 import "./playlistModal.css"
 import { useAuth } from "../../context/authContext";
 import { useVideo } from "../../context/videoContext";
-import { useNavigate,useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useState } from "react";
 import { addVideoToPlaylist, createPlaylist } from "../../utilities/apis/apis";
 export const PlaylistModal = ()=>{
@@ -12,7 +12,7 @@ export const PlaylistModal = ()=>{
     const videoDetails = videoData?.find(({ _id }) => _id === videoId)
 
     const inputData =(e)=>{
-        if(e.target.value != "")
+        if(e.target.value !== "")
         setPlaylistTitle(e.target.value)
     }
     const createPlaylistName=()=>{
