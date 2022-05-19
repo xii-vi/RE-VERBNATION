@@ -228,7 +228,7 @@ const createPlaylist = async (playlistTitle, VideoDispatch, token) => {
 }
 const addVideoToPlaylist = async (video,playlistId, VideoDispatch, token) => {
     try {
-        const {data} = await axios.post(`/api/user/playlists/${playlistId}`,{video}, {
+        await axios.post(`/api/user/playlists/${playlistId}`,{video}, {
             headers: {
                 authorization:  token
             }
@@ -262,7 +262,7 @@ const removePlaylist = async (playlistId, VideoDispatch, token) => {
 
 const removeVideoFromPlaylist = async (videoId, VideoDispatch, encodedToken, playlistId) => {
     try {
-        const {data} = await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
+        await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
             headers: { authorization: encodedToken }
         })
         VideoDispatch({ type: "REMOVE_VIDEO_FROM_PLAYLIST", payload: { videoId, playlistId } })
