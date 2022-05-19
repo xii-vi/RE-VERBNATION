@@ -1,13 +1,15 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate,Navigate, useLocation } from "react-router-dom"
 import { useEffect } from "react"
 import { useVideo } from "../../context/videoContext"
 import { useAuth } from "../../context/authContext"
 import { isVideoInWatchLater, isVideoInLikedVideo,isVideoInHistory } from "../../utilities/helper/videoFunctions"
 import { removeVideoFromWatchLater,addVideoInWatchLater, addVideoInLikedVideo,removeVideoFromLikedVideo,addVideoInHistory } from "../../utilities/apis/apis"
 import "./singleVideo.css"
+import { PlaylistModal } from "../../components/playlist/playlistModal"
 export const SingleVideo =()=>{
     const navigate = useNavigate();
-    const {videoData,VideoState:{watchLaterList,LikedVideos,History}, VideoDispatch} = useVideo()
+    const location = useLocation();
+    const {videoData,VideoState:{watchLaterList,LikedVideos,History}, VideoDispatch,Modal,setModal} = useVideo()
     const {videoId} = useParams()
     const { authState: { userLogin, encodedToken }} = useAuth();
     const videoDetails = videoData?.find(({ _id }) => _id === videoId)
@@ -41,7 +43,15 @@ export const SingleVideo =()=>{
                 } else {
                     navigate("/login");
                 }
-        };     
+        };
+    const playlistModal =()=>{
+            if(userLogin){
+                Modal?setModal(false):setModal(true)
+            }
+        else
+        navigate("/login");
+        }   
+        
     return(
     <div className="video-player py-5"> 
         <div className="center-flex">
@@ -60,11 +70,10 @@ export const SingleVideo =()=>{
             <small className="text-bold">{videoDetails?.views} views</small>
             <small className="px-2 text-bold">{videoDetails?.uploaded} months ago</small>
             </div>
-            
             <div className="margin-left-auto">
                 <i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>
                 <i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>
-                <i className="fa fa-plus-square px-2"></i>
+                <i className="fa fa-plus-square px-2"onClick={playlistModal}></i>
             </div>
         </div>
         <div className="flex">
@@ -73,8 +82,9 @@ export const SingleVideo =()=>{
             <h6>{videoDetails?.creator}</h6>
             </div>
             </div>
-        
         <p>{videoDetails?.description}</p>
+
+        {Modal && <PlaylistModal />}
     </div>
     )
 }
