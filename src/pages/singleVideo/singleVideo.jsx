@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useEffect,useState } from "react"
+import { useEffect } from "react"
 import { useVideo } from "../../context/videoContext"
 import { useAuth } from "../../context/authContext"
 import { isVideoInWatchLater, isVideoInLikedVideo,isVideoInHistory } from "../../utilities/helper/videoFunctions"
