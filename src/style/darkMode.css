@@ -1,10 +1,24 @@
 .dark{
     color: var(--white-color);
-    background-color: #121212;
+    background-color: var(--dark-aside-bg-color);
+}
+.dark .main{
+    background-color: var(--dark-main-color);
+}
+.dark .sidebar-wrapper{
+    background-color: var(--dark-aside-bg-color);
 }
 .dark .fas{
     color: var(--white-color);
 }
 .dark .sidebar-btn {
     color: var(--white-color);
+}
+
+.dark .model-content{
+    color: var(--black-color);
+}
+
+.dark .footer-icon{
+    color: var(--text-color);
 }
