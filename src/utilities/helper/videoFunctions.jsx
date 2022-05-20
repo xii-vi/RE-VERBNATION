@@ -13,9 +13,13 @@ const isVideoInHistory = (videoId, history) => {
         _id
     }) => _id === videoId)
 }
+const isVideoInPlaylist = (playlist, playlistTitleId, videoId) => {
+    return playlist.find(({ _id }) => _id === playlistTitleId)?.videos.some(({ _id }) => _id === videoId)
+}
 
 export{
     isVideoInWatchLater,
     isVideoInLikedVideo,
-    isVideoInHistory
+    isVideoInHistory,
+    isVideoInPlaylist
 }
