@@ -1,0 +1,14 @@
+.footer-menu{
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--primary-color);
+    z-index: 2;
+    position: sticky;
+    bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.footer-menu  .fas{
+    font-size: 2rem;
+}

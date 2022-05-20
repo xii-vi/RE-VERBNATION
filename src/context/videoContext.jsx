@@ -12,6 +12,8 @@ const [VideoState, VideoDispatch] = useReducer(VideoReducer, {
     LikedVideos: [],
     History:[],
     Playlist:[],
+    searchQuery: "",
+    category: "All",
 })
 useEffect(()=>{
     (async () => {

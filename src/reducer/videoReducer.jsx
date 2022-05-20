@@ -1,10 +1,20 @@
 export const VideoReducer = (state, {type,payload}) => {
     switch(type) {
+        case "FILTER_BY_SEARCH":
+            return { 
+                ...state, 
+                searchQuery: payload 
+            }
+        case "FILTER_BY_CATEGORY":
+            return { 
+                ...state, 
+                category: payload 
+            }
         case "ADD_WATCH_LATER":
-        return {
-            ...state,
-            watchLaterList: payload
-        }
+            return {
+                ...state,
+                watchLaterList: payload
+            }
         case "ADD_LIKEDVIDEO":
             return{
                 ...state,
@@ -15,13 +25,22 @@ export const VideoReducer = (state, {type,payload}) => {
                 ...state,
                 History: payload
             }
-        case "ADD_PLAYLIST":
+        case "REMOVE_VIDEO_FROM_HISTORY":
+            return{
+                ...state,
+                History: payload
+            }
+        case "CLEAR_HISTORY":
+            return{
+                ...state,
+                History: payload
+            }
+        case "CREATE_PLAYLIST":
             return{
                 ...state,
                 Playlist: payload
             }
         case "ADD_VIDEO_TO_PLAYLIST":
-            console.log(state)
             return {
                 ...state, Playlist: state.Playlist.map((playlist) =>
                     playlist._id === payload.playlistId

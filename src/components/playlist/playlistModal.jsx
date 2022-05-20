@@ -4,6 +4,7 @@ import { useVideo } from "../../context/videoContext";
 import { useParams} from "react-router-dom";
 import { useState } from "react";
 import { addVideoToPlaylist, createPlaylist } from "../../utilities/apis/apis";
+import { isVideoInPlaylist } from "../../utilities/helper/videoFunctions";
 export const PlaylistModal = ()=>{
     const[playlistTitle,setPlaylistTitle]=useState("");
     const { authState: { encodedToken }} = useAuth();
@@ -23,7 +24,6 @@ export const PlaylistModal = ()=>{
         if(e.target.checked)
         addVideoToPlaylist(videoDetails, _id ,VideoDispatch,encodedToken)
     }
-    console.log(Playlist)
     return(
     <div className="modal-background">
         <div className="modal-container flex center-flex">
@@ -36,7 +36,7 @@ export const PlaylistModal = ()=>{
                     Playlist.map(({title,_id})=>{
                     return(
                     <label>
-                        <input type="checkbox" id= { _id } onClick={(e)=>addVideo(e,_id)} />
+                        <input type="checkbox" id= { _id } onClick={(e)=>addVideo(e,_id)} checked={isVideoInPlaylist(Playlist, _id, videoDetails._id) ?? false}/>
                         <span className="px-2">{title}</span>
                     </label>
                     )})}

@@ -2,29 +2,30 @@ import "./navbar.css"
 import { useTheme } from "../../context/themeContext"
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { useVideo } from "../../context/videoContext";
 
 export const Navbar =()=>{
-    const { toggleTheme } = useTheme();
-    const {authState:{userLogin,userData},authDispatch}=useAuth();
+    const {theme, toggleTheme } = useTheme();
+    const {authState:{userLogin},authDispatch}=useAuth();
+    const {VideoDispatch} = useVideo()
     const logoutHandler = () => {
         localStorage.clear();
         authDispatch({ type: "USER_LOGOUT" })
     }
-    console.log(userData)
     return(
     <div className="navbar-wrapper">
         <nav className="flex navbar">
-            <div className="logo">
-            <span className="category-heading h2 site-name">RE-Verse</span>     
+            <div className="logo"> 
+            <Link to="/"><span className="category-heading h3 site-name">RE-Verb<span className="site-subname">nation</span></span></Link>    
             </div>
             <div className="search-bar-wrapper flex p-2">
-            <input type="text" placeholder="Search for Videos" />
+            <input type="text" placeholder="Search for Videos" onChange={(e) => VideoDispatch({ type: "FILTER_BY_SEARCH", payload: e.target.value })}/>
             <button><i className="fa fa-search cursor-pointer"></i></button>
             </div>
             <div className="nav-left-side-pills">
-            {userLogin?<span className="btn btn-secondary" onClick={logoutHandler}>Logout</span>:
-            <Link to="/login"><span className="btn btn-secondary">Login</span></Link>}
-            <i className="fa fa-sun fa-2x px-2" onClick={toggleTheme}></i>
+            {theme==="dark"?<i className="fa fa-sun fa-2x px-2" onClick={toggleTheme}></i>:<i class="fas fa-moon fa-2x px-2" onClick={toggleTheme}></i>}
+            {userLogin?<span className="btn btn-secondary auth-btn" onClick={logoutHandler}>Logout</span>:
+            <Link to="/login"><span className="btn btn-secondary auth-btn">Login</span></Link>}
             </div>
         </nav>
     </div>

@@ -30,8 +30,8 @@ export const Login = () => {
     }
     }
     return( 
-    <div className="flex center-flex login">
-        <form className="login-form" onSubmit={(e)=> submitHandler(e, email,password)}>
+    <div className="flex login main">
+        <form className="login-form p-5" onSubmit={(e)=> submitHandler(e, email,password)}>
             <p className="h5">Login</p>
             <div className="my-5 ">
                 <div className="py-5 flex flex-direction-col">
@@ -53,7 +53,7 @@ export const Login = () => {
                 </div>
                 
                 <div className="py-4">
-                    <button className="btn btn-outline-primary login-btn">Login</button>
+                    <button className="btn btn-outline-primary login-btn mb-2">Login</button>
                     <button className="btn btn-outline-primary login-btn" onClick={testHandler}>Guest Login</button>
                 </div>
 

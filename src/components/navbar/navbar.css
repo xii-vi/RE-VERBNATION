@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 .navbar{
     align-items: space-between;
     justify-content: space-between;
+}
+.site-name{
+    font-family: 'Koulen', cursive;
+}
+.site-subname{
+    color: var(--nav-sub-color);
+}
+.navbar-wrapper{
     position: sticky;
-    z-index: 2;
+    z-index: 4;
+    top: 0;
 }
 .fa-search{
     margin: 0;
@@ -23,4 +34,7 @@
     background-color: transparent;
     border: none;
     outline: none;
+}
+.auth-btn{
+    color: var(--white-color);
 }
