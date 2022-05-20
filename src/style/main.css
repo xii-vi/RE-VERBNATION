@@ -19,4 +19,20 @@ aside{
 }
 .main{
     height: 100%;
+    background-color: var(--nav-sub-color);
+}
+.position-relative{
+    position: relative;
+}
+
+.delete-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--trash-btn-color);
+}
+
+.error-page-img{
+    width: 35rem;
+    object-fit: cover;
 }

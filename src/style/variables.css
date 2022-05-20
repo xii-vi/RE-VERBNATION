@@ -1,7 +1,11 @@
 :root{
-    --primary-color: #F74332;
-    --secondary-color: #4F1B1D;
-    --cta-color: #689775;
-    --text-color: #bdbdbd;
-    --text-color-light: #83687B;
+    --primary-color: #5CDB94;
+    --secondary-color: #05396B;
+    --text-color: #05396B;
+    --text-color-light: #8DE4AF;
+    --nav-sub-color: #EDF4E0;
+    --aside-bg-color: #edf4e0a9;
+    --dark-main-color: #282827;
+    --dark-aside-bg-color: #111111;
+    --trash-btn-color: #FF6B6B;
 }
