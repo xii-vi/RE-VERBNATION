@@ -1,3 +1,12 @@
+.sidebar-wrapper{
+    position:relative;
+    background-color: var(--aside-bg-color);
+}
+.sidebar{
+    position:fixed;
+    top:6rem;
+}
+
 .sidebar>ul>li{
     color:var(---black-color);
     font-weight: bold;

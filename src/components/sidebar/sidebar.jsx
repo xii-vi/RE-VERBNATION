@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import "./sidebar.css"
 export const Sidebar = () => {
     return(
+        <div className="sidebar-wrapper">
         <aside className="flex flex-direction-col p-3 sidebar">
             <ul>
             <li className="p-2"><Link to="/"><i class="fas fa-compass"></i><button className="btn sidebar-btn"> Explore</button ></Link></li>
@@ -11,5 +12,6 @@ export const Sidebar = () => {
             <li className="p-2"><Link to="/history"><i class="fas fa-history"></i><button className="btn sidebar-btn"> History</button ></Link></li>    
             </ul>
         </aside>
+    </div>
     )
 }
