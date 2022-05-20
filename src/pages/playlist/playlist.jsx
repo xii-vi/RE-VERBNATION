@@ -6,6 +6,9 @@ export const Playlist =()=>{
     const {VideoState:{Playlist}} = useVideo();
     return(
     <div className="main py-4">
+        <p className="text-bold text-center h3 py-3">
+            Playlist
+        </p>
     {Playlist.length === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
