@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
 import { useVideo } from "../../context/videoContext"
 import { useAuth } from "../../context/authContext"
 import { isVideoInWatchLater, isVideoInLikedVideo,isVideoInHistory } from "../../utilities/helper/videoFunctions"
@@ -65,14 +65,14 @@ export const SingleVideo =()=>{
         </div>
         <div className="flex py-2">
             <div className="flex-direction-col">
-            <h4>{videoDetails?.title}</h4>
+            <h4 className="video-title">{videoDetails?.title}</h4>
             <small className="text-bold">{videoDetails?.views} views</small>
             <small className="px-2 text-bold">{videoDetails?.uploaded} months ago</small>
             </div>
-            <div className="margin-left-auto">
-                <i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>
-                <i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>
-                <i className="fa fa-plus-square px-2"onClick={playlistModal}></i>
+            <div className="margin-left-auto feat-handler">
+                {isVideoInLikedVideo(videoDetails._id, LikedVideos)?<span><i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Liked</span>:<span><i class="far fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Like</span>}
+                {isVideoInWatchLater(videoDetails._id, watchLaterList)?<span><i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>Remove from Watchlater</span>:<span><i class="far fa-clock px-2" onClick={watchLaterHandler}></i>Add to Watchlater</span>}
+                <span><i className="fa fa-plus-square px-2"onClick={playlistModal}></i>Add to Playlist</span>
             </div>
         </div>
         <div className="flex">
