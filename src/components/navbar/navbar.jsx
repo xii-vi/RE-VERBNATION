@@ -16,14 +16,14 @@ export const Navbar =()=>{
     <div className="navbar-wrapper">
         <nav className="flex navbar">
             <div className="logo"> 
-            <Link to="/"><span className="category-heading h3 site-name">RE-Verb<span className="site-subname">nation</span></span></Link>    
+            <Link to="/"><span className="category-heading h4 site-name">RE-Verb<span className="site-subname">nation</span></span></Link>    
             </div>
             <div className="search-bar-wrapper flex p-2">
             <input type="text" placeholder="Search for Videos" onChange={(e) => VideoDispatch({ type: "FILTER_BY_SEARCH", payload: e.target.value })}/>
             <button><i className="fa fa-search cursor-pointer"></i></button>
             </div>
             <div className="nav-left-side-pills">
-            {theme==="dark"?<i className="fa fa-sun fa-2x px-2" onClick={toggleTheme}></i>:<i class="fas fa-moon fa-2x px-2" onClick={toggleTheme}></i>}
+            {theme==="dark"?<i className="fa fa-sun fa-2x px-5" onClick={toggleTheme}></i>:<i class="fas fa-moon fa-2x px-2" onClick={toggleTheme}></i>}
             {userLogin?<span className="btn btn-secondary auth-btn" onClick={logoutHandler}>Logout</span>:
             <Link to="/login"><span className="btn btn-secondary auth-btn">Login</span></Link>}
             </div>
