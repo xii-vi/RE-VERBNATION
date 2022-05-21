@@ -22,3 +22,7 @@
 .dark .footer-icon{
     color: var(--text-color);
 }
+
+.dark .sidebar>ul>li:hover{
+    background-color: var(--dark-btn-hover);
+}
