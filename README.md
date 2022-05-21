@@ -108,13 +108,13 @@ Head to <a href="https://re-verbnation.netlify.app/">RE-Verbnation</a> and enjoy
 Clone the project
 
 ```bash
-  git clone https://github.com/xii-vi/re-verbnation.git
+  git clone https://github.com/xii-vi/RE-Verbnation.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd re-verbnation
+  cd RE-Verbnation
 ```
 ## How to Contribute
 
