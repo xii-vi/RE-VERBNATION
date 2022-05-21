@@ -19,7 +19,7 @@ aside{
 }
 .main{
     height: 100%;
-    background-color: var(--nav-sub-color);
+    background-color: var(--app-light-color);
 }
 .position-relative{
     position: relative;

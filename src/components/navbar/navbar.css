@@ -8,7 +8,7 @@
     font-family: 'Koulen', cursive;
 }
 .site-subname{
-    color: var(--nav-sub-color);
+    color: var(--app-light-color);
 }
 .navbar-wrapper{
     position: sticky;

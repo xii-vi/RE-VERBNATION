@@ -52,6 +52,7 @@ export const SingleVideo =()=>{
         }   
         
     return(
+    <div className="main">
     <div className="video-player py-5"> 
         <div className="center-flex">
             <iframe
@@ -84,6 +85,7 @@ export const SingleVideo =()=>{
         <p>{videoDetails?.description}</p>
 
         {Modal && <PlaylistModal />}
+    </div>
     </div>
     )
 }

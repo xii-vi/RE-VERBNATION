@@ -3,9 +3,10 @@
     --secondary-color: #05396B;
     --text-color: #05396B;
     --text-color-light: #8DE4AF;
-    --nav-sub-color: #EDF4E0;
+    --app-light-color: #f1f5eb;
     --aside-bg-color: #edf4e0a9;
     --dark-main-color: #282827;
-    --dark-aside-bg-color: #111111;
+    --dark-aside-bg-color: #111111ee;
     --trash-btn-color: #FF6B6B;
+    --dark-btn-hover:#8de4ae84;
 }
