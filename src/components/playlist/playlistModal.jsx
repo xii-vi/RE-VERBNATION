@@ -3,7 +3,7 @@ import { useAuth } from "../../context/authContext";
 import { useVideo } from "../../context/videoContext";
 import { useParams} from "react-router-dom";
 import { useState } from "react";
-import { addVideoToPlaylist, createPlaylist } from "../../utilities/apis/apis";
+import { addVideoToPlaylist, createPlaylist, removeVideoFromPlaylist } from "../../utilities/apis/apis";
 import { isVideoInPlaylist } from "../../utilities/helper/videoFunctions";
 export const PlaylistModal = ()=>{
     const[playlistTitle,setPlaylistTitle]=useState("");
@@ -23,6 +23,8 @@ export const PlaylistModal = ()=>{
     const addVideo =(e,_id)=>{
         if(e.target.checked)
         addVideoToPlaylist(videoDetails, _id ,VideoDispatch,encodedToken)
+        else
+        removeVideoFromPlaylist(videoId,VideoDispatch,encodedToken,_id)
     }
     return(
     <div className="modal-background">
