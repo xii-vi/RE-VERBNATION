@@ -5,7 +5,7 @@ import { PlaylistCard } from "../../components/playlist/playlistCard";
 export const Playlist =()=>{
     const {VideoState:{Playlist}} = useVideo();
     return(
-    <div className="main py-4">
+    <div className="main">
         <p className="text-bold text-center h3 py-3">
             Playlist
         </p>
@@ -14,7 +14,7 @@ export const Playlist =()=>{
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
     </div> :
-        <div className="flex">
+        <div className="flex p-4">
         <div className="flex videos main-display">
             {Playlist.map((playlist) => (
             <PlaylistCard playlistDetails={playlist} key={playlist._id}/>
