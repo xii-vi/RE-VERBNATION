@@ -9,7 +9,7 @@ export const VideoCard =({singleVideoCard : data})=>{
             </Link>
             <div className="p-4">
             <div className="videoCardTitle">
-                <p className="h5 py-2">{data.title}</p>
+                <div className="h5 py-2">{data.title}</div>
                 <p>{data.creator}</p>
             </div>
             <div className="flex">

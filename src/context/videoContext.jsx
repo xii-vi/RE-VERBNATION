@@ -4,7 +4,8 @@ import {VideoReducer} from "../reducer/videoReducer";
 const VideoContext = createContext();
 
 const VideoProvider =({children})=>{
-const[Modal,setModal]=useState(false)
+const [isLoading, setIsLoading] = useState(false)
+const [Modal,setModal]=useState(false)
 const [videoData,setVideoData] = useState([])
 const [categoryData,setCategoryData] =  useState([])
 const [VideoState, VideoDispatch] = useReducer(VideoReducer, {
@@ -36,7 +37,9 @@ useEffect(()=>{
             VideoState,
             VideoDispatch,
             Modal,
-            setModal
+            setModal,
+            isLoading,
+            setIsLoading
         }
         }>
             {children}

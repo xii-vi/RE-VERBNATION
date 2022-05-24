@@ -17,7 +17,7 @@ return (
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
     </div> :
-        <div className="flex">
+        <div className="flex p-4">
         <div className="flex videos main-display">
             {watchLaterList.map((video) => (
             <div className="position-relative">

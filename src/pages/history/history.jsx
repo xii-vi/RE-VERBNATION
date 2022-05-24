@@ -22,7 +22,7 @@ export const History =()=>{
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
     </div> :
-        <div className="flex">
+        <div className="flex p-4">
         <div className="videos main-display">
             {History.map((video) => (
             <div className="position-relative">

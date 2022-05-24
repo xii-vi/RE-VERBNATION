@@ -5,11 +5,12 @@ import { useParams} from "react-router-dom";
 import { useState } from "react";
 import { addVideoToPlaylist, createPlaylist, removeVideoFromPlaylist } from "../../utilities/apis/apis";
 import { isVideoInPlaylist } from "../../utilities/helper/videoFunctions";
+import { LoadSpin } from "../loader/loader";
 export const PlaylistModal = ()=>{
     const[playlistTitle,setPlaylistTitle]=useState("");
     const { authState: { encodedToken }} = useAuth();
     const {videoId} = useParams();
-    const {videoData,VideoState:{Playlist}, VideoDispatch,Modal,setModal} = useVideo()
+    const {videoData,VideoState:{Playlist}, VideoDispatch,Modal,setModal,isLoading, setIsLoading,} = useVideo()
     const videoDetails = videoData?.find(({ _id }) => _id === videoId)
 
     const inputData =(e)=>{
@@ -22,17 +23,25 @@ export const PlaylistModal = ()=>{
     }
     const addVideo =(e,_id)=>{
         if(e.target.checked)
+        {
+        setIsLoading(true);
         addVideoToPlaylist(videoDetails, _id ,VideoDispatch,encodedToken)
-        else
+        setTimeout(() => { setIsLoading(false); }, 1200);
+        }
+        else{
+        setIsLoading(true);
         removeVideoFromPlaylist(videoId,VideoDispatch,encodedToken,_id)
+        setTimeout(() => { setIsLoading(false); }, 1200);
+        }
     }
+    
     return(
     <div className="modal-background">
         <div className="modal-container flex center-flex">
             <div className="model-content p-4">
             <div className="p-2">
                 <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i class="far fa-times-circle" onClick={()=>Modal?setModal(false):setModal(true)}></i></span></div>
-                
+                {isLoading?<LoadSpin />:  
                 <div className="flex flex-direction-col">
                     {(Playlist.length===0)?<div></div>:
                     Playlist.map(({title,_id})=>{
@@ -43,6 +52,7 @@ export const PlaylistModal = ()=>{
                     </label>
                     )})}
                 </div>
+            }
             </div>
             <hr />
             <div className="p-2">

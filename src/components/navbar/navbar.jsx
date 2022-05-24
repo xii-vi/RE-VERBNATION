@@ -23,9 +23,9 @@ export const Navbar =()=>{
             <button><i className="fa fa-search cursor-pointer"></i></button>
             </div>
             <div className="nav-left-side-pills">
-            {theme==="dark"?<i className="fa fa-sun fa-2x px-5" onClick={toggleTheme}></i>:<i class="fas fa-moon fa-2x px-2" onClick={toggleTheme}></i>}
-            {userLogin?<span className="btn btn-secondary auth-btn" onClick={logoutHandler}>Logout</span>:
-            <Link to="/login"><span className="btn btn-secondary auth-btn">Login</span></Link>}
+            {theme==="dark"?<i className="fa fa-sun fa-2x px-5" onClick={toggleTheme}></i>:<i class="fas fa-moon fa-2x px-5" onClick={toggleTheme}></i>}
+            {userLogin?<span className="btn btn-secondary auth-btn" onClick={logoutHandler}>Logout<i class="fas fa-sign-out-alt ml-2"></i></span>:
+            <Link to="/login"><span className="btn btn-secondary auth-btn">Log-in <i class="fas fa-sign-in-alt ml-2"></i></span></Link>}
             </div>
         </nav>
     </div>

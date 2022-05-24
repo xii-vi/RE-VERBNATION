@@ -15,9 +15,9 @@ export const SingleVideo =()=>{
 
     useEffect(() => {
         (async () => {
-            if(!isVideoInHistory(videoDetails._id,History))
+            if(!isVideoInHistory(videoId,History))
             addVideoInHistory(videoDetails, VideoDispatch, encodedToken)
-        })()},[videoDetails,VideoDispatch,History,encodedToken])
+        })()},[videoDetails,VideoDispatch,History,encodedToken,videoId])
 
     const watchLaterHandler =()=>{
             if (userLogin) {
@@ -71,9 +71,9 @@ export const SingleVideo =()=>{
             <small className="px-2 text-bold">{videoDetails?.uploaded} months ago</small>
             </div>
             <div className="margin-left-auto feat-handler">
-                {isVideoInLikedVideo(videoDetails._id, LikedVideos)?<span><i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Liked</span>:<span><i class="far fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Like</span>}
-                {isVideoInWatchLater(videoDetails._id, watchLaterList)?<span><i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>Remove from Watchlater</span>:<span><i class="far fa-clock px-2" onClick={watchLaterHandler}></i>Add to Watchlater</span>}
-                <span><i className="fa fa-plus-square px-2"onClick={playlistModal}></i>Add to Playlist</span>
+                {isVideoInLikedVideo(videoId, LikedVideos)?<span><i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Liked</span>:<span><i class="far fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Like</span>}
+                {isVideoInWatchLater(videoId, watchLaterList)?<span><i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>Remove from Watchlater</span>:<span><i class="far fa-clock px-2" onClick={watchLaterHandler}></i>Add to Watchlater</span>}
+                <span><i className="fa fa-plus-square px-2" onClick={playlistModal}></i>Add to Playlist</span>
             </div>
         </div>
         <div className="flex">

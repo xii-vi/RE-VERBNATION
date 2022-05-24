@@ -4,11 +4,14 @@ import { useReducer } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loginReducer } from "../../reducer/authReducer";
 import { useAuth } from "../../context/authContext";
+import { LoadSpin } from "../../components/loader/loader";
+import { useVideo } from "../../context/videoContext";
 
 export const Login = () => {
     const {authDispatch}= useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const{isLoading, setIsLoading} = useVideo()
     const from = location.state?.from?.pathname || "/"; 
     const [{email,password},loginDispatch] = useReducer(loginReducer, {email:"", password:""});
     const testHandler=()=>[
@@ -18,6 +21,7 @@ export const Login = () => {
     const submitHandler= async (e, email, password)=>{
         e.preventDefault();
         try{
+        setIsLoading(true);
         const loginResponse = await getLoginDataFromServer(email,password);
         localStorage.setItem("encodedToken", loginResponse.data.encodedToken)
         localStorage.setItem('userData', JSON.stringify(loginResponse.data.foundUser));
@@ -25,12 +29,17 @@ export const Login = () => {
         authDispatch({ type: "USER_TOKEN", payload: loginResponse.data.encodedToken })
         authDispatch({ type: "USER_DATA", payload: loginResponse.data.foundUser })
         navigate(from, {replace : true} )
+        setIsLoading(false);
+
     }catch(error){
+        setIsLoading(true);
         console.log(error.message);
+        navigate("/login");
     }
     }
     return( 
     <div className="flex login main">
+        { isLoading ?<LoadSpin />:
         <form className="login-form p-5" onSubmit={(e)=> submitHandler(e, email,password)}>
             <p className="h5">Login</p>
             <div className="my-5 ">
@@ -53,14 +62,15 @@ export const Login = () => {
                 </div>
                 
                 <div className="py-4">
-                    <button className="btn btn-outline-primary login-btn mb-2">Login</button>
-                    <button className="btn btn-outline-primary login-btn" onClick={testHandler}>Guest Login</button>
+                    <button className="btn btn-primary login-btn text-bold">Login</button>
+                    <button className="btn btn-primary login-btn text-bold" onClick={testHandler}>Guest Login</button>
                 </div>
 
                 <span className="pb-2">Don't have account yet ? </span>
                 <Link to="/signup"><span className="text-bold">Sign Up</span></Link>
             </div>
         </form>
+}
     </div> 
     )
 }
