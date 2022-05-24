@@ -5,6 +5,18 @@
 //  import { v4 as uuid } from "uuid";
 export const videos = [
   {
+    _id: "9bD9_yO0ya8",
+    title: "Kajra",
+    description: "ये गीत भावनाएं हैं विरह की , इंतजार की , प्रेम की ❤️! इसे लिखना भी काफी अलग रहा... एक पुरुष हो के एक स्त्री के नजरिए से गीत लिखना हमेशा एक नया अनुभव होता है फिर भी मैंने कोशिश की है अधिक से अधिक भावनाओं को समेट पांऊ। इसे प्यारे से संगीत से सजाया है जी. जे. स्टॉर्म ने। आशा है आप सब इसे पसंद करेंगे और खूब सारा प्रेम देंगे धन्यवाद .🙏This song is with the feelings of Virhah (separation), Wait & love!.  While writing it was a very different experience with overloaded emotions ... Writing such a song from a woman's perspective being a male is always a tough piece of work, yet I have tried to accumulate much more emotions. It is adorned with lovely music of G. J. Storm. Hope you all like it and thank you so much for the love and blessings.",
+    creator: "Sholka",
+    category: "Desi Hip Hop (DHH)",
+    duration: "04:37",
+    views: "531k",
+    uploaded: "14",
+    creatorImage: "https://i.ytimg.com/vi/9bD9_yO0ya8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDvolz96-bbtdQ2fvFhoazN4vFwKA",
+    logo:"https://yt3.ggpht.com/sAce3fT8BK4YyZa9whFdEHS1793YxRqlm-i8yZzWtJA8Nw8klA4-8dII_4wJd4xrV9KYXAOHgw=s88-c-k-c0x00ffffff-no-nd-rj"
+  },
+  {
     _id: "7pCv8ztVBoI",
     title: "Seedhe Midzone Se !",
     description: "Seedhe Midzone Se ! Straight Outta Madhya Pradesh Written, Performed, Mixed & Mastered by:- ‘Spitfire’ Music:- Missy Elliott's She's A Bitch Artwork:- by ‘Sumit Roy’",
@@ -99,6 +111,18 @@ export const videos = [
     uploaded: "11",
     creatorImage: "https://i.ytimg.com/vi/6ne3oAKKjic/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCuWHKAdUSaCiwO5AGG-eVl9oeiYg",
     logo:"https://yt3.ggpht.com/ytc/AKedOLSNU0kIeJnd4VdND50qUUseroABwJX5osWcioxqCQ=s176-c-k-c0x00ffffff-no-rj"
+  },
+  {
+    _id: "3ugceWGnw_I",
+    title: "Feyago's Baul Folk Hip Hop",
+    description: "What happens when you blend Bengali folk music with urban hip hop? Track: Baul ,Artists: Feyago ft. Tarak Das Baul,Directors: Mandesh Shetty, Rishabh Soin, Asst. Director: Shakunendra Singhal, DOP: Rameshwar Naidu ,Camera: Parvdeep Singh Dandona ",
+    creator: "Feyago",
+    category: "Desi Hip Hop (DHH)",
+    duration: "03:28",
+    views: "290k",
+    uploaded: "60",
+    creatorImage: "https://i.ytimg.com/vi/3ugceWGnw_I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCaKzVN4oIe0fkS4aSdOYXcvOiuDw",
+    logo:"https://yt3.ggpht.com/ytc/AKedOLQZtvrmuyXzhRyr8CPbb-PKbnU7meal1JbWGAeyJQ=s88-c-k-c0x00ffffff-no-rj"
   },
   {
     _id: "msCJO3EppGQ",
