@@ -62,8 +62,8 @@ export const Login = () => {
                 </div>
                 
                 <div className="py-4">
-                    <button className="btn btn-outline-primary login-btn mb-2">Login</button>
-                    <button className="btn btn-outline-primary login-btn" onClick={testHandler}>Guest Login</button>
+                    <button className="btn btn-primary login-btn text-bold">Login</button>
+                    <button className="btn btn-primary login-btn text-bold" onClick={testHandler}>Guest Login</button>
                 </div>
 
                 <span className="pb-2">Don't have account yet ? </span>
