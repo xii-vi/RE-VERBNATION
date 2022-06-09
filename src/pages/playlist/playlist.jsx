@@ -1,9 +1,9 @@
-import { useVideo } from "../../context/videoContext"
 import empty from "../../assest/empty.png"
 import { Link } from "react-router-dom";
 import { PlaylistCard } from "../../components/playlist/playlistCard";
+import { useSelector } from "react-redux";
 export const Playlist =()=>{
-    const {VideoState:{Playlist}} = useVideo();
+    const {Playlist} = useSelector(store=>store.playlist)
     return(
     <div className="main">
         <p className="text-bold text-center h3 py-3">

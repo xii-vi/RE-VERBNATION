@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom"
-import { removePlaylist } from "../../utilities/apis/apis"
-import { useAuth } from "../../context/authContext"
-import { useVideo } from "../../context/videoContext"
+import { removePlaylist } from "../../pages/playlist/playlistSlice"
+import { useDispatch } from "react-redux"
 import "./playlistModal.css"
 import empty from "../../assest/empty.png"
+import { toast } from "react-toastify"
 export const PlaylistCard =({playlistDetails})=>{
     const { videos, title, _id } = playlistDetails
-    const { authState: { encodedToken }} = useAuth();
-    const { VideoDispatch } = useVideo();
+    const dispatch = useDispatch();
     const deletePlaylist = ()=>{
-        removePlaylist(_id,VideoDispatch,encodedToken)
+        dispatch(removePlaylist(_id))
+        toast.success("Playlist deleted")
     }
     return(
             <div className="videoCard p-1 playlist-card">

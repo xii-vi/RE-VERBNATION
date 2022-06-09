@@ -1,53 +1,55 @@
 import "./playlistModal.css"
-import { useAuth } from "../../context/authContext";
-import { useVideo } from "../../context/videoContext";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams} from "react-router-dom";
-import { useState } from "react";
-import { addVideoToPlaylist, createPlaylist, removeVideoFromPlaylist } from "../../utilities/apis/apis";
+import { useState} from "react";
+import { addVideoToPlaylist, createPlaylist, removeVideoFromPlaylist,setIsModalOpen,setIsLoader} from "../../pages/playlist/playlistSlice";
 import { isVideoInPlaylist } from "../../utilities/helper/videoFunctions";
 import { LoadSpin } from "../loader/loader";
+import { toast } from "react-toastify";
 export const PlaylistModal = ()=>{
     const[playlistTitle,setPlaylistTitle]=useState("");
-    const { authState: { encodedToken }} = useAuth();
     const {videoId} = useParams();
-    const {videoData,VideoState:{Playlist}, VideoDispatch,Modal,setModal,isLoading, setIsLoading,} = useVideo()
-    const videoDetails = videoData?.find(({ _id }) => _id === videoId)
+    const {isModalOpen,isLoader,Playlist} = useSelector(store=>store.playlist)
+    const dispatch = useDispatch();
+    const {videos} = useSelector(store=>store.video)
+    const videoDetails = videos?.find(({ _id }) => _id === videoId)
 
     const inputData =(e)=>{
         if(e.target.value !== "")
         setPlaylistTitle(e.target.value)
     }
     const createPlaylistName=()=>{
-        createPlaylist(playlistTitle,VideoDispatch,encodedToken)
+        dispatch(createPlaylist(playlistTitle))
         setPlaylistTitle("")
     }
-    const addVideo =(e,_id)=>{
-        if(e.target.checked)
+    const addVideo =(_id,videoDetails)=>{
+        if(!isVideoInPlaylist(Playlist, _id, videoDetails._id))
         {
-        setIsLoading(true);
-        addVideoToPlaylist(videoDetails, _id ,VideoDispatch,encodedToken)
-        setTimeout(() => { setIsLoading(false); }, 1200);
+        dispatch(setIsLoader(true));
+        dispatch(addVideoToPlaylist({id:_id,video:videoDetails})).unwrap().then((res) => toast.success("Video added to the playlist!"))
+        .catch((error) => toast.error(error));
+        setTimeout(() => { dispatch(setIsLoader(false)); }, 1200);
         }
         else{
-        setIsLoading(true);
-        removeVideoFromPlaylist(videoId,VideoDispatch,encodedToken,_id)
-        setTimeout(() => { setIsLoading(false); }, 1200);
+        dispatch(setIsLoader(true));
+        dispatch(removeVideoFromPlaylist({playlistId:_id,videoId:videoDetails._id})).unwrap().then((res) => toast.success("Video removed from the playlist!"))
+        .catch((error) => toast.error(error));
+        setTimeout(() => { dispatch(setIsLoader(false)); }, 1200);
         }
     }
-    
     return(
     <div className="modal-background">
         <div className="modal-container flex center-flex">
             <div className="model-content p-4">
             <div className="p-2">
-                <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i class="far fa-times-circle" onClick={()=>Modal?setModal(false):setModal(true)}></i></span></div>
-                {isLoading?<LoadSpin />:  
+                <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i class="far fa-times-circle" onClick={()=>isModalOpen?dispatch(setIsModalOpen(false)):dispatch(setIsModalOpen(true))}></i></span></div>
+                {isLoader?<LoadSpin />:  
                 <div className="flex flex-direction-col">
                     {(Playlist.length===0)?<div></div>:
                     Playlist.map(({title,_id})=>{
                     return(
-                    <label>
-                        <input type="checkbox" id= { _id } onClick={(e)=>addVideo(e,_id)} checked={isVideoInPlaylist(Playlist, _id, videoDetails._id) ?? false}/>
+                    <label key={_id}>
+                        <input type="checkbox" id= { _id} value={title} checked={isVideoInPlaylist(Playlist, _id, videoDetails._id) ?? false} onChange={()=>addVideo(_id,videoDetails)} />
                         <span className="px-2">{title}</span>
                     </label>
                     )})}

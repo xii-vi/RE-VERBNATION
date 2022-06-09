@@ -1,30 +1,34 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
-import { useVideo } from "../../context/videoContext"
-import { useAuth } from "../../context/authContext"
+import { useDispatch, useSelector } from "react-redux"
+import {toast} from "react-toastify"
 import { isVideoInWatchLater, isVideoInLikedVideo,isVideoInHistory } from "../../utilities/helper/videoFunctions"
-import { removeVideoFromWatchLater,addVideoInWatchLater, addVideoInLikedVideo,removeVideoFromLikedVideo,addVideoInHistory } from "../../utilities/apis/apis"
 import "./singleVideo.css"
 import { PlaylistModal } from "../../components/playlist/playlistModal"
+import { addVideoInLikedVideo,removeVideoFromLikedVideo,addVideoInWatchLater,removeVideoFromWatchLater,addVideoInHistory } from "../homepage/videoSlice"
+import { setIsModalOpen } from "../playlist/playlistSlice"
 export const SingleVideo =()=>{
     const navigate = useNavigate();
-    const {videoData,VideoState:{watchLaterList,LikedVideos,History}, VideoDispatch,Modal,setModal} = useVideo()
+    const dispatch = useDispatch();
+    const {isModalOpen} = useSelector(store=>store.playlist)
     const {videoId} = useParams()
-    const { authState: { userLogin, encodedToken }} = useAuth();
-    const videoDetails = videoData?.find(({ _id }) => _id === videoId)
-
+    const {encodedToken} = useSelector(store=>store.auth)
+    const {videos,LikedVideos,WatchLater,History} = useSelector(store=>store.video)
+    const videoDetails = videos?.find(({ _id }) => _id === videoId)
     useEffect(() => {
         (async () => {
             if(!isVideoInHistory(videoId,History))
-            addVideoInHistory(videoDetails, VideoDispatch, encodedToken)
-        })()},[videoDetails,VideoDispatch,History,encodedToken,videoId])
+            dispatch(addVideoInHistory(videoDetails))
+        })()},[videoDetails,History,videoId])
 
     const watchLaterHandler =()=>{
-            if (userLogin) {
-                if (isVideoInWatchLater(videoDetails._id, watchLaterList)) {
-                removeVideoFromWatchLater(videoDetails._id, VideoDispatch, encodedToken);
+            if (encodedToken) {
+                if (isVideoInWatchLater(videoDetails._id, WatchLater)) {
+                dispatch(removeVideoFromWatchLater(videoDetails._id)).then((res) => toast.success("Removed From WatchLater!"))
+                .catch((error) => toast.error(error));
                 } else {
-                addVideoInWatchLater(videoDetails, VideoDispatch, encodedToken);
+                dispatch(addVideoInWatchLater(videoDetails)).then((res) => toast.success("Added to WatchLater!"))
+                .catch((error) => toast.error(error));
                 }
             } else {
                 navigate("/login");
@@ -33,19 +37,21 @@ export const SingleVideo =()=>{
         };
     
     const LikedVideoHandler =()=>{
-            if (userLogin) {
+            if (encodedToken) {
                 if (isVideoInLikedVideo(videoDetails._id, LikedVideos)) {
-                    removeVideoFromLikedVideo(videoDetails._id, VideoDispatch, encodedToken);
+                    dispatch(removeVideoFromLikedVideo(videoDetails._id)).then((res) => toast.success("Video Disliked!"))
+                    .catch((error) => toast.error(error));
                     } else {
-                    addVideoInLikedVideo(videoDetails, VideoDispatch, encodedToken);
+                    dispatch(addVideoInLikedVideo(videoDetails)).then((res) => toast.success("Video Liked!"))
+                    .catch((error) => toast.error(error));
                     }
                 } else {
                     navigate("/login");
                 }
         };
     const playlistModal =()=>{
-            if(userLogin){
-                Modal?setModal(false):setModal(true)
+            if(encodedToken){
+                isModalOpen?dispatch(setIsModalOpen(false)):dispatch(setIsModalOpen(true))
             }
         else
         navigate("/login");
@@ -72,7 +78,7 @@ export const SingleVideo =()=>{
             </div>
             <div className="margin-left-auto feat-handler">
                 {isVideoInLikedVideo(videoId, LikedVideos)?<span><i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Liked</span>:<span><i class="far fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Like</span>}
-                {isVideoInWatchLater(videoId, watchLaterList)?<span><i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>Remove from Watchlater</span>:<span><i class="far fa-clock px-2" onClick={watchLaterHandler}></i>Add to Watchlater</span>}
+                {isVideoInWatchLater(videoId, WatchLater)?<span><i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>Remove from Watchlater</span>:<span><i class="far fa-clock px-2" onClick={watchLaterHandler}></i>Add to Watchlater</span>}
                 <span><i className="fa fa-plus-square px-2" onClick={playlistModal}></i>Add to Playlist</span>
             </div>
         </div>
@@ -84,7 +90,7 @@ export const SingleVideo =()=>{
             </div>
         <p>{videoDetails?.description}</p>
 
-        {Modal && <PlaylistModal />}
+        {isModalOpen && <PlaylistModal />}
     </div>
     </div>
     )
