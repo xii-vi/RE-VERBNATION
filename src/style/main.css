@@ -32,6 +32,9 @@ aside{
     color: var(--trash-btn-color);
 }
 
+.btn-clicked{
+    color: var(--white-color);
+}
 .error-page-img{
     width: 35rem;
     object-fit: cover;

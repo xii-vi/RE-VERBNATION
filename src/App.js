@@ -1,18 +1,18 @@
 import { Navbar,Sidebar,RequireAuth, Footer } from "./components";
 import { History,Homepage,ErrorPage,LikedVideo,Login,Playlist,PlaylistVideo,Signup,SingleVideo,WatchLater } from "./pages";
-import { useTheme } from "./context/themeContext"
 import "./style/main.css"
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {ScrollToTop} from "./utilities/helper/scrollToTop"
+import { useSelector } from "react-redux";
 function App() {
-  const { theme } = useTheme();
+  const { theme } = useSelector(store=>store.theme)
   return (
     <div className= {theme === "light" ? "light" : "dark"}>
     <ScrollToTop />
     <ToastContainer
-          position='top-right'
+          position='top-center'
           autoClose={1500}
           newestOnTop={false}
           closeOnClick

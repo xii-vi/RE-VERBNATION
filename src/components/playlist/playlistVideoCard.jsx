@@ -1,14 +1,14 @@
+import { useDispatch } from "react-redux";
 import { Link,useParams} from "react-router-dom"
-import { removeVideoFromPlaylist } from "../../utilities/apis/apis"
-import { useAuth } from "../../context/authContext"
-import { useVideo } from "../../context/videoContext"
+import { toast } from "react-toastify";
+import { removeVideoFromPlaylist } from "../../pages/playlist/playlistSlice"
 import "./playlistModal.css"
 export const PlaylistVideoCard =({playlistVideoCard:data})=>{
-    const { authState: { encodedToken }} = useAuth();
-    const { VideoDispatch } = useVideo();
-    const {playlistId} = useParams()
+    const {playlistId} = useParams();
+    const dispatch= useDispatch()
     const deleteVideo = ()=>{
-        removeVideoFromPlaylist(data._id,VideoDispatch,encodedToken,playlistId)
+        dispatch(removeVideoFromPlaylist({videoId:data._id,playlistId:playlistId}))
+        toast.success("Video Removed From Playlist")
     }
     return(
         <div className="videoCard">
@@ -30,7 +30,6 @@ export const PlaylistVideoCard =({playlistVideoCard:data})=>{
             <p><small>{data.duration}</small></p>
             <p className="margin-left-auto">{data.uploaded} months ago</p>
             </div>
-            
             </div>
         </div>
     )

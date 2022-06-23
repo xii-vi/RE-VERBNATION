@@ -14,7 +14,7 @@ export const videos = [
     views: "531k",
     uploaded: "14",
     creatorImage: "https://i.ytimg.com/vi/9bD9_yO0ya8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDvolz96-bbtdQ2fvFhoazN4vFwKA",
-    logo:"https://yt3.ggpht.com/sAce3fT8BK4YyZa9whFdEHS1793YxRqlm-i8yZzWtJA8Nw8klA4-8dII_4wJd4xrV9KYXAOHgw=s88-c-k-c0x00ffffff-no-nd-rj"
+    logo:"https://yt3.ggpht.com/qO1tOpRigwClvqhh03jApfqYycJhzNZCc84H2ji5xkQYNndN8AGAdFY-CQnZt5Yc29T5HdBs90E=s176-c-k-c0x00ffffff-no-rj-mo"
   },
   {
     _id: "7pCv8ztVBoI",
@@ -104,7 +104,7 @@ export const videos = [
     _id: "6ne3oAKKjic",
     title: "Sajda",
     description: "This song is a traditional blend between The Qawwali & Hip Hop Culture. It's a Collaboration among the finest artists both from India & Pakistan.",
-    creator: "Ink Heart feat. Hashim Nawaz",
+    creator: "Ink Heart x Hashim",
     category: "Lo-Fi Hip Hop (LFH)",
     duration: "04:00",
     views: "697k",
@@ -114,7 +114,7 @@ export const videos = [
   },
   {
     _id: "3ugceWGnw_I",
-    title: "Feyago's Baul Folk Hip Hop",
+    title: "Feyago's Folk Hip Hop",
     description: "What happens when you blend Bengali folk music with urban hip hop? Track: Baul ,Artists: Feyago ft. Tarak Das Baul,Directors: Mandesh Shetty, Rishabh Soin, Asst. Director: Shakunendra Singhal, DOP: Rameshwar Naidu ,Camera: Parvdeep Singh Dandona ",
     creator: "Feyago",
     category: "Desi Hip Hop (DHH)",

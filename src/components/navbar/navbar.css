@@ -19,22 +19,6 @@
     margin: 0;
     padding: 0;
 }
-.search-bar-wrapper{
-    align-items: center;
-    justify-content: center;
-    background-color: var(--white-color);
-    border-radius: 5px;
-}
-.search-bar-wrapper>input{
-    max-width: 85%;
-    border: none;
-    outline: none;
-}
-.search-bar-wrapper>button{
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
 .auth-btn{
     color: var(--white-color);
 }

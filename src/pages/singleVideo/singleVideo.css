@@ -1,8 +1,27 @@
 .video-player{
+    position: relative;
+}
+
+.video-player-details{
     max-width: 60vw;
-    margin: auto;
+    position: fixed;
 }
 
 .margin-left-auto{
     margin-left: auto;
+}
+
+@media screen and (max-width: 1280px){
+    .video-player-details{
+        position: static;
+        margin: auto;
+    }
+    .suggested-video{
+        display: flex;
+        gap: 4rem;
+        margin: 0 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
 }

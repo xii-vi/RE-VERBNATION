@@ -1,10 +1,10 @@
-import { useVideo } from "../../context/videoContext"
 import { PlaylistVideoCard } from "../../components/playlist/playlistVideoCard";
 import empty from "../../assest/empty.png"
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 export const PlaylistVideo =()=>{
-    const {VideoState:{Playlist}} = useVideo();
-    const {playlistId} = useParams()
+    const {Playlist} = useSelector(store=>store.playlist)
+    const {playlistId} = useParams();
     const data = Playlist.find((item) => item._id === playlistId)
     const videos = data?.videos;
     return(

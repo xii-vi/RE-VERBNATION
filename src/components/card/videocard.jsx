@@ -7,14 +7,14 @@ export const VideoCard =({singleVideoCard : data})=>{
             <Link to={`/video/${data._id}`}>
                 <img className="img-responsive" src={data.creatorImage} alt="creator-img"/>
             </Link>
-            <div className="p-4">
+            <div className="py-2">
             <div className="videoCardTitle">
-                <div className="h5 py-2">{data.title}</div>
-                <p>{data.creator}</p>
+                <div className="py-2">{data.title}</div>
+                <small>{data.creator}</small>
             </div>
-            <div className="flex">
-            <p><small>{data.duration}</small></p>
-            <p className="margin-left-auto">{data.uploaded} months ago</p>
+            <div className="flex py-1">
+            <small>{data.duration}</small>
+            <small className="margin-left-auto">{data.uploaded} months</small>
             </div>
             </div>
         </div>

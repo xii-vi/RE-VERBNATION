@@ -1,53 +1,51 @@
 import "./playlistModal.css"
-import { useAuth } from "../../context/authContext";
-import { useVideo } from "../../context/videoContext";
-import { useParams} from "react-router-dom";
-import { useState } from "react";
-import { addVideoToPlaylist, createPlaylist, removeVideoFromPlaylist } from "../../utilities/apis/apis";
+import { useDispatch, useSelector } from "react-redux";
+import { useState} from "react";
+import { addVideoToPlaylist, createPlaylist, removeVideoFromPlaylist,setIsModalOpen,setIsLoader} from "../../pages/playlist/playlistSlice";
 import { isVideoInPlaylist } from "../../utilities/helper/videoFunctions";
 import { LoadSpin } from "../loader/loader";
-export const PlaylistModal = ()=>{
+import { toast } from "react-toastify";
+export const PlaylistModal = ({playlistVideo : data})=>{
     const[playlistTitle,setPlaylistTitle]=useState("");
-    const { authState: { encodedToken }} = useAuth();
-    const {videoId} = useParams();
-    const {videoData,VideoState:{Playlist}, VideoDispatch,Modal,setModal,isLoading, setIsLoading,} = useVideo()
-    const videoDetails = videoData?.find(({ _id }) => _id === videoId)
+    const {isModalOpen,isLoader,Playlist} = useSelector(store=>store.playlist)
+    const dispatch = useDispatch();
 
     const inputData =(e)=>{
         if(e.target.value !== "")
         setPlaylistTitle(e.target.value)
     }
     const createPlaylistName=()=>{
-        createPlaylist(playlistTitle,VideoDispatch,encodedToken)
+        dispatch(createPlaylist(playlistTitle))
         setPlaylistTitle("")
     }
-    const addVideo =(e,_id)=>{
-        if(e.target.checked)
+    const addVideo =(_id,data)=>{
+        if(!isVideoInPlaylist(Playlist, _id, data._id))
         {
-        setIsLoading(true);
-        addVideoToPlaylist(videoDetails, _id ,VideoDispatch,encodedToken)
-        setTimeout(() => { setIsLoading(false); }, 1200);
+        dispatch(setIsLoader(true));
+        dispatch(addVideoToPlaylist({id:_id,video:data})).unwrap().then((res) => toast.success("Video added to the playlist!"))
+        .catch((error) => toast.error(error));
+        setTimeout(() => { dispatch(setIsLoader(false)); }, 1200);
         }
         else{
-        setIsLoading(true);
-        removeVideoFromPlaylist(videoId,VideoDispatch,encodedToken,_id)
-        setTimeout(() => { setIsLoading(false); }, 1200);
+        dispatch(setIsLoader(true));
+        dispatch(removeVideoFromPlaylist({playlistId:_id,videoId:data._id})).unwrap().then((res) => toast.success("Video removed from the playlist!"))
+        .catch((error) => toast.error(error));
+        setTimeout(() => { dispatch(setIsLoader(false)); }, 1200);
         }
     }
-    
     return(
     <div className="modal-background">
         <div className="modal-container flex center-flex">
             <div className="model-content p-4">
             <div className="p-2">
-                <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i class="far fa-times-circle" onClick={()=>Modal?setModal(false):setModal(true)}></i></span></div>
-                {isLoading?<LoadSpin />:  
-                <div className="flex flex-direction-col">
+                <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i class="far fa-times-circle" onClick={()=>isModalOpen?dispatch(setIsModalOpen(false)):dispatch(setIsModalOpen(true))}></i></span></div>
+                {isLoader?<LoadSpin />:  
+                <div className="flex flex-direction-col py-2">
                     {(Playlist.length===0)?<div></div>:
                     Playlist.map(({title,_id})=>{
                     return(
-                    <label>
-                        <input type="checkbox" id= { _id } onClick={(e)=>addVideo(e,_id)} checked={isVideoInPlaylist(Playlist, _id, videoDetails._id) ?? false}/>
+                    <label key={_id}>
+                        <input type="checkbox" id= { _id} value={title} checked={isVideoInPlaylist(Playlist, _id, data._id) ?? false} onChange={()=>addVideo(_id,data)} />
                         <span className="px-2">{title}</span>
                     </label>
                     )})}
@@ -58,8 +56,8 @@ export const PlaylistModal = ()=>{
             <div className="p-2">
                 <h6>Create new playlist</h6>
                 <div className="py-4">
-                    <input className="p-2" type="text" placeholder="Enter Playlist Name" value={playlistTitle} onChange={(e)=>inputData(e)}/>
-                    <button className="btn btn-primary" onClick={createPlaylistName}>Add</button>
+                    <input className="p-2 mr-5" type="text" placeholder="Enter Playlist Name" value={playlistTitle} onChange={(e)=>inputData(e)}/>
+                    <button className="btn btn-primary ml-5" onClick={createPlaylistName}>Add</button>
                 </div>
             </div>
             </div>
