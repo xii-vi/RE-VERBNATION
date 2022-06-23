@@ -7,6 +7,7 @@ import "./singleVideo.css"
 import { PlaylistModal } from "../../components/playlist/playlistModal"
 import { addVideoInLikedVideo,removeVideoFromLikedVideo,addVideoInWatchLater,removeVideoFromWatchLater,addVideoInHistory } from "../homepage/videoSlice"
 import { setIsModalOpen } from "../playlist/playlistSlice"
+import { VideoCard } from "../../components/card/videocard"
 export const SingleVideo =()=>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -15,11 +16,13 @@ export const SingleVideo =()=>{
     const {encodedToken} = useSelector(store=>store.auth)
     const {videos,LikedVideos,WatchLater,History} = useSelector(store=>store.video)
     const videoDetails = videos?.find(({ _id }) => _id === videoId)
+    const suggestedVideos = videos?.filter(({ _id })=>_id !== videoId)
+
     useEffect(() => {
         (async () => {
             if(!isVideoInHistory(videoId,History))
             dispatch(addVideoInHistory(videoDetails))
-        })()},[videoDetails,History,videoId])
+        })()},[videoDetails,History,videoId,dispatch])
 
     const watchLaterHandler =()=>{
             if (encodedToken) {
@@ -49,6 +52,7 @@ export const SingleVideo =()=>{
                     navigate("/login");
                 }
         };
+        
     const playlistModal =()=>{
             if(encodedToken){
                 isModalOpen?dispatch(setIsModalOpen(false)):dispatch(setIsModalOpen(true))
@@ -58,8 +62,9 @@ export const SingleVideo =()=>{
         }   
         
     return(
-    <div className="main">
-    <div className="video-player py-5"> 
+    <div className="single-video-page-layout">
+        <div className="video-player p-5"> 
+        <div className="video-player-details">
         <div className="center-flex">
             <iframe
                 width="640"
@@ -77,9 +82,9 @@ export const SingleVideo =()=>{
             <small className="px-2 text-bold">{videoDetails?.uploaded} months ago</small>
             </div>
             <div className="margin-left-auto feat-handler">
-                {isVideoInLikedVideo(videoId, LikedVideos)?<span><i className="fa fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Liked</span>:<span><i class="far fa-thumbs-up px-2" onClick={LikedVideoHandler}></i>Like</span>}
-                {isVideoInWatchLater(videoId, WatchLater)?<span><i className="fa fa-clock px-2" onClick={watchLaterHandler}></i>Remove from Watchlater</span>:<span><i class="far fa-clock px-2" onClick={watchLaterHandler}></i>Add to Watchlater</span>}
-                <span><i className="fa fa-plus-square px-2" onClick={playlistModal}></i>Add to Playlist</span>
+                {isVideoInLikedVideo(videoId, LikedVideos)?<span onClick={LikedVideoHandler}><i className="fa fa-thumbs-up px-2" ></i>Like</span>:<span onClick={LikedVideoHandler}><i className="far fa-thumbs-up px-2"></i>Like</span>}
+                {isVideoInWatchLater(videoId, WatchLater)?<span onClick={watchLaterHandler}><i className="fa fa-clock px-2"></i>Watchlater</span>:<span onClick={watchLaterHandler}><i className="far fa-clock px-2"></i>Watchlater</span>}
+                <span onClick={playlistModal}><i className="fa fa-plus-square px-2"></i>Add to Playlist</span>
             </div>
         </div>
         <div className="flex">
@@ -90,8 +95,12 @@ export const SingleVideo =()=>{
             </div>
         <p>{videoDetails?.description}</p>
 
-        {isModalOpen && <PlaylistModal />}
-    </div>
+        {isModalOpen && <PlaylistModal playlistVideo={videoDetails}/>}
+        </div>
+        </div>
+        <div className="suggested-video py-4 pr-5">
+        {suggestedVideos.sort(() => Math.random() - Math.random()).slice(0, 5).map(item=><VideoCard singleVideoCard={item} key={item._id}/>)}
+        </div>
     </div>
     )
 }

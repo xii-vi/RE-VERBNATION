@@ -12,7 +12,7 @@ function App() {
     <div className= {theme === "light" ? "light" : "dark"}>
     <ScrollToTop />
     <ToastContainer
-          position='top-right'
+          position='top-center'
           autoClose={1500}
           newestOnTop={false}
           closeOnClick

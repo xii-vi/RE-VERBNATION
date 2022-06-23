@@ -1,17 +1,20 @@
 import "../../style/layout.css"
 import noVideoFound from "../../assest/noVideoFound.svg"
-import { VideoCard } from "../../components/card/videocard"
+import { ExploreVideoCard,LoadSpin } from "../../components"
 import { filterFunction } from "../../utilities/helper/filterFunctions"
 import { useEffect } from "react"
 import { toast } from "react-toastify"
 import { getVideosDataFromServer,getCategoriesDataFromServer,setCurrentCategory,setSearchQuery } from "./videoSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { setIsLoader } from "../playlist/playlistSlice"
-import { LoadSpin } from "../../components/loader/loader"
+import { useState } from "react"
+import { PlaylistModal } from "../../components/playlist/playlistModal"
 export const Homepage = ()=>{
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [btnClicked,setBtnClicked] = useState(false)
+    const [currentVideoData,setCurrentVideoData] = useState(null)
     const { videos, categories, category, searchQuery } = useSelector(store=>store.video)
-    const {isLoader} = useSelector(store=>store.playlist)
+    const {isLoader,isModalOpen} = useSelector(store=>store.playlist)
     useEffect(() => {
         dispatch(setIsLoader(true))
         const data = dispatch(getVideosDataFromServer());
@@ -34,7 +37,7 @@ export const Homepage = ()=>{
     {
     isLoader?<LoadSpin />:
     filteredVideo.length <= 0?
-        <div className='text-center py-2 main'>
+        <div className='text-center p-4 main'>
         <div className="m-2">
             <div className="search-bar-wrapper-sm flex p-2">
             <input type="text" placeholder="🔍 Search for Videos" value={searchQuery} onChange={(e) => dispatch(setSearchQuery(e.target.value))}/>
@@ -50,14 +53,20 @@ export const Homepage = ()=>{
             </div>
             </div>
             <div className="flex">
-                <span className="btn btn-primary m-2 flex center-flex" onClick={(e) => dispatch(setCurrentCategory(e.target.innerText))}>All</span>
+                <span className={btnClicked==="All"?"btn btn-primary m-2 btn-clicked":"btn btn-primary m-2"} onClick={(e) =>{
+                    setBtnClicked(e.target.innerText)
+                    dispatch(setCurrentCategory(e.target.innerText))
+                }}>All</span>
 
-                {categories.map(item=><span className="btn btn-primary m-2" key={item._id} onClick={(e) => dispatch(setCurrentCategory(e.target.innerText))}>{item.categoryName}</span>)}
+                {categories.map(item=><span className={btnClicked===item.categoryName?"btn btn-primary m-2 btn-clicked":"btn btn-primary m-2"} key={item._id} onClick={(e) => {
+                    setBtnClicked(e.target.innerText)
+                    dispatch(setCurrentCategory(e.target.innerText))}}>{item.categoryName}</span>)}
 
             </div>
         <div className="main-display">
-            {filteredVideo.map(item=><VideoCard singleVideoCard={item} key={item._id}/>)}
+            {filteredVideo.map(item=><ExploreVideoCard singleVideoCard={item}  setCurrentClickedVideo={setCurrentVideoData} key={item._id}/>)}
         </div>
+        {isModalOpen && <PlaylistModal playlistVideo={currentVideoData}/>}
         </div>
         }
         </>

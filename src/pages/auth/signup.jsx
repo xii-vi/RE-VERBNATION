@@ -7,16 +7,12 @@ import { signUpUser } from "./authSlice";
 export const Signup = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const submitHandler= (e)=>{
     e.preventDefault();
-    }
-
-    const signUpHandler = ()=>{
         const user = {
             email: email,
             password: password,
@@ -26,7 +22,7 @@ export const Signup = () => {
         const data = dispatch(signUpUser(user));
         data.then((res) =>res.error
                 ? toast.error(res.payload)
-                : toast.success("User signed up!") &&
+                : toast.success("You signed up!") &&
                 navigate("/login")
             )
             .catch((e) => toast.error(e));
@@ -54,7 +50,7 @@ return(
             <div>{confirmPassword === password ? "" : <div class="alert alert-danger"><i class="fas fa-exclamation-triangle mr-2"></i>Password doesn't match</div>}
             </div>
             <div className="py-5">
-                <button className="btn btn-primary text-bold login-btn" onClick={signUpHandler}>Register</button>
+                <button className="btn btn-primary text-bold login-btn">Register</button>
             </div>
             <Link to="/login"><p className="py-2">Already a member ? <span className="text-bold">Login</span></p></Link>
         </div>

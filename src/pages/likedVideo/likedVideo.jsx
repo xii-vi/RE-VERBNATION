@@ -14,14 +14,15 @@ export const LikedVideo =()=>{
     }
     return(
     <div className="main">
-        <p className="text-bold text-center h3 py-3">
-            Liked Videos
-        </p>
     {LikedVideos.length === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
     </div> :
+    <>
+    <p className="text-bold text-center h3 py-3">
+            Liked Videos
+        </p>
         <div className="flex p-4">
         <div className="flex videos main-display">
             {LikedVideos.map((video) => (
@@ -33,7 +34,8 @@ export const LikedVideo =()=>{
             </div>
             ))}
             </div>
-    </div>}
+    </div>
+    </>}
     </div>
     )
 }

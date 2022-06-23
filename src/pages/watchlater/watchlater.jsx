@@ -11,17 +11,17 @@ const removeVideo =(id)=>{
     dispatch(removeVideoFromWatchLater(id))
     toast.success("Removed From WatchLater")
 }
-
 return (
     <div className="main">
-        <p className="text-bold text-center h3 py-3">
-            WatchLater
-        </p>
     {WatchLater.length === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
         <img className="img-responsive py-2" src={empty} alt="empty-img"/>
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
     </div> :
+    <>
+    <p className="text-bold text-center h3 py-3">
+            WatchLater
+        </p>
         <div className="flex p-4">
         <div className="flex videos main-display">
             {WatchLater.map((video) => (
@@ -33,7 +33,8 @@ return (
             </div>
             ))}
             </div>
-    </div>}
+    </div>
+    </>}
     </div>
 );
 };

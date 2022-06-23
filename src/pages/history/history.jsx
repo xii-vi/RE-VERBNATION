@@ -17,6 +17,12 @@ export const History =()=>{
     }
     return(
     <div className="main">
+    {History.length === 0 ? 
+    <div className="py-4 flex center-flex flex-direction-col">
+        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
+        <Link to="/"><button className="btn btn-primary">Explore</button></Link>
+    </div> :
+    <div>
         <div className="flex py-3 center-flex">
         <p className="text-bold text-center h3 pl-4">
             History
@@ -25,11 +31,6 @@ export const History =()=>{
                 <p className="btn btn-primary" onClick={removeAllVideo}>Clear History<i className="fa fa-trash pl-4"></i></p>
             </div>
         </div>
-    {History.length === 0 ? 
-    <div className="py-4 flex center-flex flex-direction-col">
-        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
-        <Link to="/"><button className="btn btn-primary">Explore</button></Link>
-    </div> :
         <div className="flex p-4">
         <div className="videos main-display">
             {History.map((video) => (
@@ -40,6 +41,7 @@ export const History =()=>{
             </div>
             ))}
             </div>
+    </div>
     </div>}
     </div>
     )

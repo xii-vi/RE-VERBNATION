@@ -8,9 +8,11 @@
     grid-template-columns: repeat(4,1fr);
     grid-gap: 10px;
 }
-
+.single-video-page-layout{
+    display: grid;
+    grid-template-columns: 78% 22%;
+}
 .search-bar-wrapper-sm{
-    display: none;
     align-items: center;
     justify-content: center;
     background-color: var(--white-color);
@@ -31,6 +33,9 @@
     .main-display{
         grid-template-columns: repeat(3,1fr);
     }
+    .single-video-page-layout{
+        grid-template-columns: auto; 
+    }
 }
 
 @media screen and (max-width: 980px){
@@ -49,13 +54,7 @@
     .footer-menu{
         display: flex;
     }
-    .search-bar-wrapper{
-        display: none;
-    }
-    .search-bar-wrapper-sm{
-        display: flex;
-    }
-    .video-player{
+    .video-player-details{
         max-width: 90vw;
     }
     .feat-handler{

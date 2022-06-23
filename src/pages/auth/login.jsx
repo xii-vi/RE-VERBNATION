@@ -33,14 +33,12 @@ export const Login = () => {
     .then((res) =>
         res.error
         ? toast.error(res.payload)
-        : toast.success("User logged in!") && navigate(from, {replace : true})
+        : toast.success("Logged in!") && navigate(from, {replace : true})
     )
     .catch((e) => toast.error(e));
   };
     const submitHandler= (e)=>{
         e.preventDefault();
-    }
-    const loginHandler = ()=>{
         const user = {
             email: email,
             password: password,
@@ -70,16 +68,12 @@ export const Login = () => {
                 </div>
                 <div className="flex">
                 <label>
-                <input type="checkbox"/>
-                Remember me
+                <input type="checkbox" required/>
+                <span className="px-2">Remember me</span>
                 </label>
-                <div className=" margin-left-auto">
-                    Forgot Password ?
                 </div>
-                </div>
-                
                 <div className="py-4">
-                    <button className="btn btn-primary login-btn text-bold" onClick={loginHandler}>Login</button>
+                    <button className="btn btn-primary login-btn text-bold">Login</button>
                     <button className="btn btn-primary login-btn text-bold" onClick={testHandler}>Guest Login</button>
                 </div>
 
