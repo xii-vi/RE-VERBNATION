@@ -33,6 +33,7 @@ export const Homepage = ()=>{
     }, [category, dispatch]);
     
     const filteredVideo = filterFunction(videos, searchQuery, category)
+
     return(<>
     {
     isLoader?<LoadSpin />:
@@ -40,7 +41,7 @@ export const Homepage = ()=>{
         <div className='text-center p-4 main'>
         <div className="m-2">
             <div className="search-bar-wrapper-sm flex p-2">
-            <input type="text" placeholder="🔍 Search for Videos" value={searchQuery} onChange={(e) => dispatch(setSearchQuery(e.target.value))}/>
+            <input type="text" placeholder="🔍 Search for Videos" value={searchQuery} onChange={(e) => dispatch(setSearchQuery((e.target.value)))}/>
             </div>
             </div>
     <img className="img-responsive error-page-img" src={noVideoFound} alt="error-page" />
@@ -53,12 +54,12 @@ export const Homepage = ()=>{
             </div>
             </div>
             <div className="flex">
-                <span className={btnClicked==="All"?"btn btn-primary m-2 btn-clicked":"btn btn-primary m-2"} onClick={(e) =>{
+                <span className={btnClicked==="All"?"btn btn-secondary m-2 btn-clicked":"btn btn-primary m-2"} onClick={(e) =>{
                     setBtnClicked(e.target.innerText)
                     dispatch(setCurrentCategory(e.target.innerText))
                 }}>All</span>
 
-                {categories.map(item=><span className={btnClicked===item.categoryName?"btn btn-primary m-2 btn-clicked":"btn btn-primary m-2"} key={item._id} onClick={(e) => {
+                {categories.map(item=><span className={btnClicked===item.categoryName?"btn btn-secondary m-2 btn-clicked":"btn btn-primary m-2"} key={item._id} onClick={(e) => {
                     setBtnClicked(e.target.innerText)
                     dispatch(setCurrentCategory(e.target.innerText))}}>{item.categoryName}</span>)}
 

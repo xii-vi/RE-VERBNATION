@@ -19,8 +19,13 @@ export const History =()=>{
     <div className="main">
     {History.length === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
-        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
+        <div className="flex">
+        <h3>Nothing in History</h3>
+        <div className="margin-left-auto px-5">
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
+        </div>
+        </div>
+        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
     </div> :
     <div>
         <div className="flex py-3 center-flex">

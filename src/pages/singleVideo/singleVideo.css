@@ -7,10 +7,6 @@
     position: fixed;
 }
 
-.margin-left-auto{
-    margin-left: auto;
-}
-
 @media screen and (max-width: 1280px){
     .video-player-details{
         position: static;

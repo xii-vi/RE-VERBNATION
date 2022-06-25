@@ -8,8 +8,13 @@ export const Playlist =()=>{
     <div className="main">
     {Playlist.length === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
-        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
+        <div className="flex">
+        <h3>No Playlist</h3>
+        <div className="margin-left-auto px-5">
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
+        </div>
+        </div>
+        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
     </div> :
     <>
     <p className="text-bold text-center h3 py-3">
