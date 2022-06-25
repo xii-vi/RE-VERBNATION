@@ -16,8 +16,13 @@ export const LikedVideo =()=>{
     <div className="main">
     {LikedVideos.length === 0 ? 
     <div className="py-4 flex center-flex flex-direction-col">
-        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
+        <div className="flex">
+        <h3>No Liked Videos</h3>
+        <div className="margin-left-auto px-5">
         <Link to="/"><button className="btn btn-primary">Explore</button></Link>
+        </div>
+        </div>
+        <img className="img-responsive py-2" src={empty} alt="empty-img"/>
     </div> :
     <>
     <p className="text-bold text-center h3 py-3">
@@ -29,7 +34,7 @@ export const LikedVideo =()=>{
             <div className="position-relative">
             <VideoCard singleVideoCard={video} key={video._id}/>
             <div className="delete-btn p-2">
-            <i class="fa fa-trash" id={video._id} onClick={(e)=>removeVideo(e.target.id)}></i>
+            <i className="fa fa-trash" id={video._id} onClick={(e)=>removeVideo(e.target.id)}></i>
             </div>
             </div>
             ))}

@@ -14,8 +14,7 @@ export const Login = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const from = location.state?.from?.pathname || "/"; 
-
+    const from = location.state?.from?.pathname || -1; 
     useEffect(() => {
         localStorage.setItem("loginToken", encodedToken);
     }, [encodedToken]);
@@ -65,12 +64,6 @@ export const Login = () => {
                 <div className="pb-5 flex flex-direction-col">
                     <small className="pb-2">Password</small>
                     <input className="p-2 password" type="password" placeholder="password" value={password} required onChange={(e)=> setPassword(e.target.value)}/>
-                </div>
-                <div className="flex">
-                <label>
-                <input type="checkbox" required/>
-                <span className="px-2">Remember me</span>
-                </label>
                 </div>
                 <div className="py-4">
                     <button className="btn btn-primary login-btn text-bold">Login</button>

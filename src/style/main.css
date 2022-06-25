@@ -21,6 +21,9 @@ aside{
     height: 100%;
     background-color: var(--app-light-color);
 }
+.margin-left-auto{
+    margin-left: auto;
+}
 .position-relative{
     position: relative;
 }

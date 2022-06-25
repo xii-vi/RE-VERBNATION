@@ -5,6 +5,18 @@
 //  import { v4 as uuid } from "uuid";
 export const videos = [
   {
+    _id: "8DMlJ3FVPl8",
+    title: "Launda befikar",
+    description: "Everything's alright and if not, it'll be alright. Rebuttal on hope on luck, I believe in hard work! Getting real about the hustle, riches and fame on my music journey, delving into how I found myself running behind sound every day and at the end of the day even with minimal returns in my hand I still believe - Hai Sab Sahi Hai Sab Sahi.Lyricist / Composed / Rap by - Mc Heam, Mixing & Mastering by - Abhijay Sharma, Music by - Bombay Beat Broadcast", 
+    creator: "MC Heam",
+    category: "Lo-Fi Hip Hop (LFH)",
+    duration: "03:03",
+    views: "214k",
+    uploaded: "13",
+    creatorImage: "https://i.ytimg.com/vi/8DMlJ3FVPl8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCTvy0sguWVvl3eWVPoSC67Qnu2Ww",
+    logo:"https://yt3.ggpht.com/ytc/AKedOLRSTi8uFoA25ogS_dbriH8jP1eupJmsBhx7CN6I=s176-c-k-c0x00ffffff-no-rj"
+  },
+  {
     _id: "9bD9_yO0ya8",
     title: "Kajra",
     description: "ये गीत भावनाएं हैं विरह की , इंतजार की , प्रेम की ❤️! इसे लिखना भी काफी अलग रहा... एक पुरुष हो के एक स्त्री के नजरिए से गीत लिखना हमेशा एक नया अनुभव होता है फिर भी मैंने कोशिश की है अधिक से अधिक भावनाओं को समेट पांऊ। इसे प्यारे से संगीत से सजाया है जी. जे. स्टॉर्म ने। आशा है आप सब इसे पसंद करेंगे और खूब सारा प्रेम देंगे धन्यवाद .🙏This song is with the feelings of Virhah (separation), Wait & love!.  While writing it was a very different experience with overloaded emotions ... Writing such a song from a woman's perspective being a male is always a tough piece of work, yet I have tried to accumulate much more emotions. It is adorned with lovely music of G. J. Storm. Hope you all like it and thank you so much for the love and blessings.",
@@ -27,6 +39,18 @@ export const videos = [
     uploaded: "4",
     creatorImage: "https://i.ytimg.com/vi/7pCv8ztVBoI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDSdrnCFO-HQaIUh5Xg8pMVHZTyRg",
     logo:"https://yt3.ggpht.com/ytc/AKedOLRWhHNtgUqOtT_Y7MO7-9mFCcB3eZ8ghv6KaVh8=s176-c-k-c0x00ffffff-no-rj"
+  },
+  {
+    _id: "7sLyZoyOqzM",
+    title: "Tu Nasha",
+    description: "The first song from KHAYAAL, Tu Nasha is a mellow chillhop track, with catchy vocal melodies and minimalistic music.KHAYAAL is a collection of melody driven beautiful tracks by me. Artist: Dhruv Sthetick, Music & Mix Mastered by : Dhruv Sthetick, Written & Performed by - Dhruv Sthetick, Video & Cover Art : Dhruv Sthetick ",
+    creator: "Dhruv Sthetick",
+    category: "Lo-Fi Hip Hop (LFH)",
+    duration: "03:39",
+    views: "1.2M",
+    uploaded: "23",
+    creatorImage: "https://i.ytimg.com/vi/7sLyZoyOqzM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDT33FdJUBDgbVc-U4nBiKHBx_tyA",
+    logo:"https://yt3.ggpht.com/ytc/AKedOLRYGNzyJoNg_gZGIkWREYV8NxlmeMRDCEmKOhwfeQ=s176-c-k-c0x00ffffff-no-rj"
   },
   {
     _id: "2V6O3lL5eT4",
@@ -65,6 +89,18 @@ export const videos = [
     logo:"https://yt3.ggpht.com/1x4DLA1fRSEwvjY7FHwuHi7sBtIzUF0pwmZ-EEPQweMIX7s4YNQI9QCit8y9qafe-lwRP2pQww=s88-c-k-c0x00ffffff-no-nd-rj"
   },
   {
+    _id: "6ne3oAKKjic",
+    title: "Sajda",
+    description: "This song is a traditional blend between The Qawwali & Hip Hop Culture. It's a Collaboration among the finest artists both from India & Pakistan.",
+    creator: "Ink Heart x Hashim",
+    category: "Lo-Fi Hip Hop (LFH)",
+    duration: "04:00",
+    views: "697k",
+    uploaded: "11",
+    creatorImage: "https://i.ytimg.com/vi/6ne3oAKKjic/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCuWHKAdUSaCiwO5AGG-eVl9oeiYg",
+    logo:"https://yt3.ggpht.com/ytc/AKedOLSNU0kIeJnd4VdND50qUUseroABwJX5osWcioxqCQ=s176-c-k-c0x00ffffff-no-rj"
+  },
+  {
     _id: "MxTTWO_488M",
     title: "Sanak",
     description: "What happens when the goddess of death comes calling and the devil inside cannot resist the temptation?,'Sanak' by Authen,Lyrics & Vocals - Authen,Beat By Angellaciencia,Mixed & Mastered by Shhiv @Reset Studios,Label : Reset Music",
@@ -87,30 +123,6 @@ export const videos = [
     uploaded: "21",
     creatorImage: "https://i.ytimg.com/vi/6xJypoyQFnQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA0H3wni5yp4n16mbN9NgZFiogB_g",
     logo:"https://yt3.ggpht.com/6Yn6kC4WHVDFXJy5Ws8-W2h7grlrvhazAfbya3ukhLBPlPeSqsZLense_qrpir9jsckTz3_8zA=s176-c-k-c0x00ffffff-no-rj"
-  },
-  {
-    _id: "8DMlJ3FVPl8",
-    title: "Launda befikar",
-    description: "Everything's alright and if not, it'll be alright. Rebuttal on hope on luck, I believe in hard work! Getting real about the hustle, riches and fame on my music journey, delving into how I found myself running behind sound every day and at the end of the day even with minimal returns in my hand I still believe - Hai Sab Sahi Hai Sab Sahi.Lyricist / Composed / Rap by - Mc Heam, Mixing & Mastering by - Abhijay Sharma, Music by - Bombay Beat Broadcast", 
-    creator: "MC Heam",
-    category: "Lo-Fi Hip Hop (LFH)",
-    duration: "03:03",
-    views: "214k",
-    uploaded: "13",
-    creatorImage: "https://i.ytimg.com/vi/8DMlJ3FVPl8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCTvy0sguWVvl3eWVPoSC67Qnu2Ww",
-    logo:"https://yt3.ggpht.com/ytc/AKedOLRSTi8uFoA25ogS_dbriH8jP1eupJmsBhx7CN6I=s176-c-k-c0x00ffffff-no-rj"
-  },
-  {
-    _id: "6ne3oAKKjic",
-    title: "Sajda",
-    description: "This song is a traditional blend between The Qawwali & Hip Hop Culture. It's a Collaboration among the finest artists both from India & Pakistan.",
-    creator: "Ink Heart x Hashim",
-    category: "Lo-Fi Hip Hop (LFH)",
-    duration: "04:00",
-    views: "697k",
-    uploaded: "11",
-    creatorImage: "https://i.ytimg.com/vi/6ne3oAKKjic/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCuWHKAdUSaCiwO5AGG-eVl9oeiYg",
-    logo:"https://yt3.ggpht.com/ytc/AKedOLSNU0kIeJnd4VdND50qUUseroABwJX5osWcioxqCQ=s176-c-k-c0x00ffffff-no-rj"
   },
   {
     _id: "3ugceWGnw_I",
@@ -147,17 +159,5 @@ export const videos = [
     uploaded: "6",
     creatorImage: "https://i.ytimg.com/vi/n3UVfJTsZ4c/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAhsYRTb_bZRcwnXwWijLUWIrPIXw",
     logo:"https://yt3.ggpht.com/2gSBylGuE0KHcTPWbcQ5YSHAFKwteekTDl9zuoxcr5_FdcRZ6W-8T0Yjz-MKYMJK_i8znJN6Kg=s176-c-k-c0x00ffffff-no-rj"
-  },
-  {
-    _id: "7sLyZoyOqzM",
-    title: "Tu Nasha",
-    description: "The first song from KHAYAAL, Tu Nasha is a mellow chillhop track, with catchy vocal melodies and minimalistic music.KHAYAAL is a collection of melody driven beautiful tracks by me. Artist: Dhruv Sthetick, Music & Mix Mastered by : Dhruv Sthetick, Written & Performed by - Dhruv Sthetick, Video & Cover Art : Dhruv Sthetick ",
-    creator: "Dhruv Sthetick",
-    category: "Lo-Fi Hip Hop (LFH)",
-    duration: "03:39",
-    views: "1.2M",
-    uploaded: "23",
-    creatorImage: "https://i.ytimg.com/vi/7sLyZoyOqzM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDT33FdJUBDgbVc-U4nBiKHBx_tyA",
-    logo:"https://yt3.ggpht.com/ytc/AKedOLRYGNzyJoNg_gZGIkWREYV8NxlmeMRDCEmKOhwfeQ=s176-c-k-c0x00ffffff-no-rj"
   },
 ];

@@ -38,7 +38,7 @@ export const PlaylistModal = ({playlistVideo : data})=>{
         <div className="modal-container flex center-flex">
             <div className="model-content p-4">
             <div className="p-2">
-                <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i class="far fa-times-circle" onClick={()=>isModalOpen?dispatch(setIsModalOpen(false)):dispatch(setIsModalOpen(true))}></i></span></div>
+                <div className="h6 text-bold">Add to an existing playlist <span className="text-align-right pl-3"><i className="far fa-times-circle" onClick={()=>isModalOpen?dispatch(setIsModalOpen(false)):dispatch(setIsModalOpen(true))}></i></span></div>
                 {isLoader?<LoadSpin />:  
                 <div className="flex flex-direction-col py-2">
                     {(Playlist.length===0)?<div></div>:

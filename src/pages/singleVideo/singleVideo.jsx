@@ -82,9 +82,9 @@ export const SingleVideo =()=>{
             <small className="px-2 text-bold">{videoDetails?.uploaded} months ago</small>
             </div>
             <div className="margin-left-auto feat-handler">
-                {isVideoInLikedVideo(videoId, LikedVideos)?<span onClick={LikedVideoHandler}><i className="fa fa-thumbs-up px-2" ></i>Like</span>:<span onClick={LikedVideoHandler}><i className="far fa-thumbs-up px-2"></i>Like</span>}
-                {isVideoInWatchLater(videoId, WatchLater)?<span onClick={watchLaterHandler}><i className="fa fa-clock px-2"></i>Watchlater</span>:<span onClick={watchLaterHandler}><i className="far fa-clock px-2"></i>Watchlater</span>}
-                <span onClick={playlistModal}><i className="fa fa-plus-square px-2"></i>Add to Playlist</span>
+                {isVideoInLikedVideo(videoId, LikedVideos)?<span className="px-4" onClick={LikedVideoHandler}><i className="fa fa-thumbs-up px-2" ></i>Like</span>:<span className="px-4" onClick={LikedVideoHandler}><i className="far fa-thumbs-up px-2"></i>Like</span>}
+                {isVideoInWatchLater(videoId, WatchLater)?<span className="px-4" onClick={watchLaterHandler}><i className="fa fa-clock px-2"></i>Watchlater</span>:<span className="px-4" onClick={watchLaterHandler}><i className="far fa-clock px-2"></i>Watchlater</span>}
+                <span className="pl-4" onClick={playlistModal}><i className="fa fa-plus-square px-2"></i>Add to Playlist</span>
             </div>
         </div>
         <div className="flex">
@@ -92,8 +92,8 @@ export const SingleVideo =()=>{
             <div className="flex center-flex flex-direction-col px-2">
             <h6>{videoDetails?.creator}</h6>
             </div>
-            </div>
-        <p>{videoDetails?.description}</p>
+        </div>
+            <small className="h6">{videoDetails?.description}</small>
 
         {isModalOpen && <PlaylistModal playlistVideo={videoDetails}/>}
         </div>
