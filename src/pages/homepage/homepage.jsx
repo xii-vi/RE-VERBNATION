@@ -13,13 +13,14 @@ export const Homepage = ()=>{
     const dispatch = useDispatch();
     const [btnClicked,setBtnClicked] = useState(false)
     const [currentVideoData,setCurrentVideoData] = useState(null)
+    const [filteredVideo,setFilteredVideo] = useState([])
     const { videos, categories, category, searchQuery } = useSelector(store=>store.video)
     const {isLoader,isModalOpen} = useSelector(store=>store.playlist)
     useEffect(() => {
         dispatch(setIsLoader(true))
         const data = dispatch(getVideosDataFromServer());
         data.unwrap().catch((error) => toast.error(error));
-        setTimeout(() => { dispatch(setIsLoader(false)) }, 300);
+        setTimeout(() => { dispatch(setIsLoader(false)) }, 500);
     }, [dispatch]);
 
     useEffect(() => {
@@ -31,8 +32,18 @@ export const Homepage = ()=>{
         const categoryName = category;
         dispatch(setCurrentCategory(categoryName));
     }, [category, dispatch]);
-    
-    const filteredVideo = filterFunction(videos, searchQuery, category)
+
+    useEffect(
+        () => {
+        const handler = setTimeout(() => {
+            setFilteredVideo(filterFunction(videos, searchQuery, category))
+        },400);
+        return () => {
+            clearTimeout(handler);
+        };
+        },
+        [videos,searchQuery,category]
+    );
 
     return(<>
     {
