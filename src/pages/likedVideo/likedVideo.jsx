@@ -31,8 +31,8 @@ export const LikedVideo =()=>{
         <div className="flex p-4">
         <div className="flex videos main-display">
             {LikedVideos.map((video) => (
-            <div className="position-relative">
-            <VideoCard singleVideoCard={video} key={video._id}/>
+            <div className="position-relative" key={video._id}>
+            <VideoCard singleVideoCard={video} />
             <div className="delete-btn p-2">
             <i className="fa fa-trash" id={video._id} onClick={(e)=>removeVideo(e.target.id)}></i>
             </div>

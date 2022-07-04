@@ -22,7 +22,9 @@ export const SingleVideo =()=>{
         (async () => {
             if(!isVideoInHistory(videoId,History))
             dispatch(addVideoInHistory(videoDetails))
-        })()},[videoDetails,History,videoId,dispatch])
+        })()
+    
+    },[videoDetails,History,videoId,dispatch])
 
     const watchLaterHandler =()=>{
             if (encodedToken) {

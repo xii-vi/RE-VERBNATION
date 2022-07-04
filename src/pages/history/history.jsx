@@ -39,9 +39,9 @@ export const History =()=>{
         <div className="flex p-4">
         <div className="videos main-display">
             {History.map((video) => (
-            <div className="position-relative" key={video._id}>
+            <div className="position-relative" key={video.id}>
             <VideoCard singleVideoCard={video}/>
-            <div className="delete-btn p-2"><i class="fa fa-trash" id={video._id} onClick={(e)=>removeVideo(e.target.id)}></i>
+            <div className="delete-btn p-2"><i className="fa fa-trash" onClick={()=>removeVideo(video._id)}></i>
             </div>
             </div>
             ))}
