@@ -2,9 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import {toast} from "react-toastify"
 
+const userInfo = JSON.parse(localStorage.getItem('userData')) || ""
+const tokenDetails = localStorage.getItem("token") || ""
 const initialState = {
-    encodedToken: null,
-    user: null,
+    encodedToken: !!tokenDetails,
+    user: userInfo,
     isLoading: false,
 };
 
@@ -13,11 +15,15 @@ export const loginUser = createAsyncThunk(
     async (user, {rejectWithValue}) => {
         const { email, password } = user;
         try {
-            const response = await axios.post("/api/auth/login", {
+            const {
+                data: { foundUser, encodedToken },
+            } = await axios.post("/api/auth/login", {
                 email,
                 password
             });
-            return response.data;
+            localStorage.setItem("token", encodedToken)
+            localStorage.setItem('userData', JSON.stringify(foundUser));
+            return { foundUser, encodedToken };
         } catch (error) {
             toast.error("Some Error Occured");
             return rejectWithValue("Email or password is incorrect");
@@ -49,6 +55,9 @@ const authSlice = createSlice({
         state.user = null;
         state.encodedToken = null;
         localStorage.removeItem("loginToken");
+        localStorage.removeItem("userData");
+        localStorage.removeItem("token");
+        localStorage.removeItem("encodedToken");
     }
     },
     extraReducers: {
