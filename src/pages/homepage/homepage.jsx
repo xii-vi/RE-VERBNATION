@@ -4,7 +4,7 @@ import { ExploreVideoCard,LoadSpin } from "../../components"
 import { filterFunction } from "../../utilities/helper/filterFunctions"
 import { useEffect } from "react"
 import { toast } from "react-toastify"
-import { getVideosDataFromServer,getCategoriesDataFromServer,setCurrentCategory,setSearchQuery } from "./videoSlice"
+import {getCategoriesDataFromServer,setCurrentCategory,setSearchQuery } from "./videoSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { setIsLoader } from "../playlist/playlistSlice"
 import { useState } from "react"
@@ -18,8 +18,6 @@ export const Homepage = ()=>{
     const {isLoader,isModalOpen} = useSelector(store=>store.playlist)
     useEffect(() => {
         dispatch(setIsLoader(true))
-        const data = dispatch(getVideosDataFromServer());
-        data.unwrap().catch((error) => toast.error(error));
         setTimeout(() => { dispatch(setIsLoader(false)) }, 500);
     }, [dispatch]);
 

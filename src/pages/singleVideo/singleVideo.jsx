@@ -12,19 +12,15 @@ export const SingleVideo =()=>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {isModalOpen} = useSelector(store=>store.playlist)
-    const {videoId} = useParams()
+    const {videoId} = useParams();
     const {encodedToken} = useSelector(store=>store.auth)
     const {videos,LikedVideos,WatchLater,History} = useSelector(store=>store.video)
     const videoDetails = videos?.find(({ _id }) => _id === videoId)
-    const suggestedVideos = videos?.filter(({ _id })=>_id !== videoId)
-
+    const suggestedVideos = videos?.filter(({ _id,category })=>_id !== videoId && category===videoDetails.category )
     useEffect(() => {
-        (async () => {
-            if(!isVideoInHistory(videoId,History))
+            if(videoDetails && !isVideoInHistory(videoId,History))
             dispatch(addVideoInHistory(videoDetails))
-        })()
-    
-    },[videoDetails,History,videoId,dispatch])
+    },[videoDetails,History,videoId])
 
     const watchLaterHandler =()=>{
             if (encodedToken) {
@@ -101,7 +97,7 @@ export const SingleVideo =()=>{
         </div>
         </div>
         <div className="suggested-video py-4 pr-5">
-        {suggestedVideos.sort(() => Math.random() - Math.random()).slice(0, 5).map(item=><VideoCard singleVideoCard={item} key={item._id}/>)}
+        {suggestedVideos.map(item=><VideoCard singleVideoCard={item} key={item._id}/>)}
         </div>
     </div>
     )

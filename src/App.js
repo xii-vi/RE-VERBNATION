@@ -5,9 +5,18 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {ScrollToTop} from "./utilities/helper/scrollToTop"
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import {useEffect} from 'react';
+import {getVideosDataFromServer} from './pages/homepage/videoSlice';
 function App() {
-  const { theme } = useSelector(store=>store.theme)
+  const dispatch = useDispatch();
+  const { theme } = useSelector(store=>store.theme);
+  
+  useEffect(()=>{
+    const data = dispatch(getVideosDataFromServer());
+    console.log(data)
+      },[dispatch])
+
   return (
     <div className= {theme === "light" ? "light" : "dark"}>
     <ScrollToTop />
