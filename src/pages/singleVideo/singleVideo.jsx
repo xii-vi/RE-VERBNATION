@@ -20,7 +20,7 @@ export const SingleVideo =()=>{
     useEffect(() => {
             if(videoDetails && !isVideoInHistory(videoId,History))
             dispatch(addVideoInHistory(videoDetails))
-    },[videoDetails,History,videoId])
+    },[videoDetails,History,videoId,dispatch])
 
     const watchLaterHandler =()=>{
             if (encodedToken) {

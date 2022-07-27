@@ -14,7 +14,6 @@ function App() {
   
   useEffect(()=>{
     const data = dispatch(getVideosDataFromServer());
-    console.log(data)
       },[dispatch])
 
   return (
