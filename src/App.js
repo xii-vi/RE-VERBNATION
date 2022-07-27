@@ -13,7 +13,7 @@ function App() {
   const { theme } = useSelector(store=>store.theme);
   
   useEffect(()=>{
-    const data = dispatch(getVideosDataFromServer());
+    dispatch(getVideosDataFromServer());
       },[dispatch])
 
   return (
